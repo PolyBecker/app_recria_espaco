@@ -48,7 +48,7 @@ export default function LoginPage() {
             className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500"
             aria-label={showPassword ? 'Ocultar senha' : 'Mostrar senha'}
           >
-            {showPassword ? <VisibilityOff fontSize="small" /> : <Visibility fontSize="small" />}
+            {showPassword ? <Visibility fontSize="small" /> : <VisibilityOff fontSize="small" />}
           </button>
         </div>
 
