@@ -7,31 +7,39 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
 
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+  };
+
   return (
     <div className="flex flex-col items-center justify-between min-h-screen bg-[#FFF8EC] px-6 py-10">
       {/* Logo */}
       <img src="/icon_recriaespaco.svg" alt="Logo" className="w-16 h-16 mt-20 mb-10" />
 
       {/* Formulário */}
-      <div className="flex flex-col w-full max-w-xs gap-4">
+      <form onSubmit={handleSubmit} className="flex flex-col w-full max-w-xs gap-4">
         {/* Email */}
+        <label htmlFor="email" className="sr-only">Email</label>
         <input
+          id="email"
           type="email"
           placeholder="Email"
-          className="w-full px-4 py-3 rounded-lg bg-white text-sm placeholder-gray-400 shadow outline-none 
-                     border border-transparent 
-                     hover:border-[#F1D6A7] 
+          className="w-full px-4 py-3 rounded-lg bg-white text-sm placeholder-gray-400 shadow outline-none
+                     border border-transparent
+                     hover:border-[#F1D6A7]
                      focus:ring-2 focus:ring-[#F1D6A7]"
         />
 
         {/* Senha com ícone MUI funcional */}
+        <label htmlFor="password" className="sr-only">Senha</label>
         <div className="relative">
           <input
+            id="password"
             type={showPassword ? 'text' : 'password'}
             placeholder="Senha"
-            className="w-full px-4 py-3 rounded-lg bg-white text-sm placeholder-gray-400 shadow outline-none 
-                       border border-transparent 
-                       hover:border-[#F1D6A7] 
+            className="w-full px-4 py-3 rounded-lg bg-white text-sm placeholder-gray-400 shadow outline-none
+                       border border-transparent
+                       hover:border-[#F1D6A7]
                        focus:ring-2 focus:ring-[#F1D6A7]"
           />
           <button
@@ -45,14 +53,14 @@ export default function LoginPage() {
         </div>
 
         {/* Botão de login */}
-        <button className="w-full py-3 rounded-lg text-white font-semibold bg-orange-500 shadow-md transition-colors duration-200 hover:bg-[#EA7800] active:bg-[#FFA13F]">
+        <button type="submit" className="w-full py-3 rounded-lg text-white font-semibold bg-orange-500 shadow-md transition-colors duration-200 hover:bg-[#EA7800] active:bg-[#FFA13F]">
           Log in
         </button>
 
         <a href="#" className="text-center text-sm text-gray-600 underline">
           Esqueci minha senha
         </a>
-      </div>
+      </form>
 
       {/* Social login */}
       <div className="flex flex-col items-center gap-4 mt-10">
