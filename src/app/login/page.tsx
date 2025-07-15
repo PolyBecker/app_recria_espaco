@@ -53,7 +53,7 @@ export default function LoginPage() {
         </div>
 
         {/* Botão de login */}
-        <button type="submit" className="w-full py-3 rounded-lg text-white font-semibold bg-orange-500 shadow-md transition-colors duration-200 hover:bg-[#EA7800] active:bg-[#FFA13F]">
+        <button type="submit" className="w-full py-3 rounded-lg text-white font-semibold bg-orange-500 shadow-md transition-colors duration-200 hover:bg-[#FFA13F] active:bg-[#FFA13F]">
           Log in
         </button>
 
