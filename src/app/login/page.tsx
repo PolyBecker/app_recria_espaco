@@ -24,7 +24,7 @@ export default function LoginPage() {
           id="email"
           type="email"
           placeholder="Email"
-          className="w-full px-4 py-3 rounded-lg bg-white text-sm placeholder-gray-400 shadow outline-none
+          className="w-full px-4 py-3 rounded-lg bg-white text-sm text-[#777777] placeholder-[#777777] shadow outline-none
                      border border-transparent
                      hover:border-[#F1D6A7]
                      focus:ring-2 focus:ring-[#F1D6A7]"
@@ -37,7 +37,7 @@ export default function LoginPage() {
             id="password"
             type={showPassword ? 'text' : 'password'}
             placeholder="Senha"
-            className="w-full px-4 py-3 rounded-lg bg-white text-sm placeholder-gray-400 shadow outline-none
+            className="w-full px-4 py-3 rounded-lg bg-white text-sm text-[#777777] placeholder-[#777777] shadow outline-none
                        border border-transparent
                        hover:border-[#F1D6A7]
                        focus:ring-2 focus:ring-[#F1D6A7]"
