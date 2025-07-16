@@ -138,7 +138,6 @@ export default function ProfessionalsPage() {
           })}
         </div>
       </div>
-
       {/* Rodapé com ícones MUI */}
       <div className="fixed bottom-0 left-0 right-0 h-16 bg-white flex items-center justify-around shadow-md rounded-t-xl px-4">
         <Home className="text-gray-600" />
