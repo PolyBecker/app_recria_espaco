@@ -53,7 +53,7 @@ export default function ProfessionalsPage() {
       {/* Seção 1: perfil do usuário */}
       <div className="flex items-center space-x-4 px-4">
         <div className="w-[34px] h-[34px] rounded-full overflow-hidden">
-          <Image src="/current_user.png" alt="User" width={34} height={34} />
+          <Image src="/current_user.avif" alt="User" width={34} height={34} />
         </div>
         <span className="text-[20px] font-bold text-[#484747] font-inter">user-name</span>
       </div>
