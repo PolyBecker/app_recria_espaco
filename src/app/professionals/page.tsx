@@ -51,11 +51,11 @@ export default function ProfessionalsPage() {
         <h2 className="text-[15px] font-medium text-[#484747] font-inter mb-2">Personalize seu espaço com IA</h2>
         <div className="flex items-center space-x-2 w-full">
           <div className="flex-grow rounded-lg overflow-hidden">
-            <Image src="/sofa1.jpg" alt="Sofá 1" width={500} height={120} className="object-cover w-full h-auto" />
+            <Image src="/place_before.png" alt="Sofá 1" width={500} height={120} className="object-cover w-full h-auto" />
           </div>
           <ArrowForwardIos fontSize="small" className="text-gray-400" />
           <div className="flex-grow rounded-lg overflow-hidden">
-            <Image src="/sofa2.jpg" alt="Sofá 2" width={500} height={120} className="object-cover w-full h-auto" />
+            <Image src="/place_after.png" alt="Sofá 2" width={500} height={120} className="object-cover w-full h-auto" />
           </div>
         </div>
         <button className="w-full mt-4 py-3 rounded-lg text-white font-semibold bg-[#F88208] shadow-md transition-colors duration-200 hover:bg-[#FFA13F] active:bg-[#FFA13F]">
@@ -70,9 +70,9 @@ export default function ProfessionalsPage() {
           {Array.from({ length: 10 }).map((_, i) => (
             <div key={i} className="w-28 flex-shrink-0 border rounded-xl p-2 text-center text-xs bg-white shadow">
               <div className="mb-1 w-full h-14 rounded overflow-hidden">
-                <Image src="/store/pillow.png" alt="Produto" width={112} height={56} className="object-cover w-full h-full" />
+                <Image src="/store/taça.png" alt="Produto" width={122} height={56} className="object-cover w-full h-full" />
               </div>
-              <div className="text-[#484747] font-bold text-[9px] font-inter mb-1">Pillow</div>
+              <div className="text-[#484747] font-bold text-[9px] font-inter mb-1">Taça</div>
               <div className="text-gray-500 mb-1">R$ 30,00</div>
               <button className="border text-orange-500 border-orange-300 rounded px-2 py-0.5 text-[10px]">+ Adicionar</button>
             </div>
