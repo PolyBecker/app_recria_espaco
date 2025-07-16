@@ -34,3 +34,25 @@ input::placeholder,
 textarea::placeholder {
   color: #777777;
 }
+
+/* Oculta as barras de navegação dos containers com scroll */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Cursor ao arrastar listas horizontalmente */
+.dragging {
+  cursor: grabbing !important;
+  user-select: none;
+}
+
+/* Remove o “N” preto do rodapé exibido pelo Next.js em desenvolvimento */
+#nextjs__container,
+#__next-build-watcher {
+  display: none !important;
+}
