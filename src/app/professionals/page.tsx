@@ -33,6 +33,13 @@ export default function ProfessionalsPage() {
   const startX = useRef(0);
   const startScroll = useRef(0);
 
+  // Refs e estados para o carrossel de produtos (sessão 5)
+  const [productDragging, setProductDragging] = useState(false);
+  const productScrollRef = useRef<HTMLDivElement>(null);
+  const productPointerDown = useRef(false);
+  const productStartX = useRef(0);
+  const productStartScroll = useRef(0);
+
   const works = [
     { name: 'cleaner', Icon: CleaningServices },
     { name: 'electrician', Icon: ElectricalServices },
@@ -90,6 +97,34 @@ export default function ProfessionalsPage() {
       container.releasePointerCapture(e.pointerId);
     }
     setDragging(false);
+  };
+
+  // Handlers para o carrossel de produtos
+  const handleProductPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    const container = productScrollRef.current;
+    if (!container) return;
+    productPointerDown.current = true;
+    productStartX.current = e.clientX;
+    productStartScroll.current = container.scrollLeft;
+    setProductDragging(true);
+    container.setPointerCapture(e.pointerId);
+  };
+
+  const handleProductPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (!productPointerDown.current) return;
+    const container = productScrollRef.current;
+    if (!container) return;
+    const walk = e.clientX - productStartX.current;
+    container.scrollLeft = productStartScroll.current - walk;
+  };
+
+  const endProductDrag = (e: React.PointerEvent<HTMLDivElement>) => {
+    productPointerDown.current = false;
+    const container = productScrollRef.current;
+    if (container) {
+      container.releasePointerCapture(e.pointerId);
+    }
+    setProductDragging(false);
   };
 
   return (
@@ -160,7 +195,14 @@ export default function ProfessionalsPage() {
       {/* Seção 5: Novidades */}
       <div className="px-4">
         <h2 className="text-[15px] font-medium text-[#484747] font-inter mb-2">Novidades</h2>
-        <div className="flex space-x-4 overflow-x-auto cursor-grab no-scrollbar">
+        <div
+          ref={productScrollRef}
+          className={`flex space-x-4 overflow-x-auto no-scrollbar ${productDragging ? 'cursor-grabbing' : 'cursor-grab'}`}
+          onPointerDown={handleProductPointerDown}
+          onPointerMove={handleProductPointerMove}
+          onPointerUp={endProductDrag}
+          onPointerLeave={endProductDrag}
+        >
           {storeItems.map((file) => {
             const name = file.replace(/\.[^/.]+$/, '').replace(/_/g, ' ');
 
