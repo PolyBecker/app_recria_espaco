@@ -48,18 +48,18 @@ export default function ProfessionalsListPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FDFDFB] px-4 py-6 space-y-6 pb-20 flex flex-col">
+    <div className="min-h-screen bg-[#FDFDFB] px-4 py-6 pb-20 flex flex-col space-y-6">
 
-      {/* Seção 1: Título da categoria */}
-      <h1 className="text-[15px] font-medium text-[#484747] font-inter">{area}</h1>
+      {/* Título e card de destaque fixos */}
+      <div className="sticky top-0 bg-[#FDFDFB] space-y-6 pb-4 z-20">
+        <h1 className="text-[15px] font-medium text-[#484747] font-inter">{area}</h1>
 
-      {/* Seção 2: Card destaque */}
-      <div className="bg-white shadow rounded-xl p-4 flex items-center space-x-4 sticky top-4 z-10">
-        <div className="w-16 h-16 rounded-full overflow-hidden">
-          <Image
-            src="/list_workers/worker13.jpg"
-            alt="Destaque"
-            width={64}
+        <div className="bg-white shadow rounded-xl p-4 flex items-center space-x-4">
+          <div className="w-16 h-16 rounded-full overflow-hidden">
+            <Image
+              src="/list_workers/worker13.jpg"
+              alt="Destaque"
+              width={64}
             height={64}
             className="object-cover"
           />
@@ -86,13 +86,14 @@ export default function ProfessionalsListPage() {
           >
             Ver perfil
           </Button>
+          </div>
         </div>
       </div>
 
       {/* Seção 3: Lista vertical de profissionais */}
       <div
         ref={scrollRef}
-        className={`space-y-4 overflow-y-auto no-scrollbar flex-1 ${dragging ? 'cursor-grabbing' : 'cursor-grab'}`}
+        className={`relative space-y-4 overflow-y-auto no-scrollbar flex-1 scroll-mask ${dragging ? 'cursor-grabbing' : 'cursor-grab'}`}
         onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}
         onPointerUp={endDrag}
