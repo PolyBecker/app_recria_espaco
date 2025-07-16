@@ -10,25 +10,38 @@ import {
   SearchOutlined,
   ContentCut,
   Person,
+  CleaningServices,
+  ElectricalServices,
+  Weekend,
+  Yard,
+  Window,
+  Grass,
+  Construction,
+  Spa,
+  FormatPaint,
+  Pets,
+  Plumbing,
+  Pool,
+  Handyman,
 } from '@mui/icons-material';
 
 export default function ProfessionalsPage() {
   const [search, setSearch] = useState('');
 
   const works = [
-    'icon_cleaner.png',
-    'icon_electrician.png',
-    'icon_furniture.png',
-    'icon_gardener.png',
-    'icon_glazier.png',
-    'icon_gram.png',
-    'icon_mason.png',
-    'icon_masseuse.png',
-    'icon_painter.png',
-    'icon_pet_sitter.png',
-    'icon_plumber.png',
-    'icon_pool.png',
-    'icon_repairs.png',
+    { name: 'cleaner', Icon: CleaningServices },
+    { name: 'electrician', Icon: ElectricalServices },
+    { name: 'furniture', Icon: Weekend },
+    { name: 'gardener', Icon: Yard },
+    { name: 'glazier', Icon: Window },
+    { name: 'gram', Icon: Grass },
+    { name: 'mason', Icon: Construction },
+    { name: 'masseuse', Icon: Spa },
+    { name: 'painter', Icon: FormatPaint },
+    { name: 'pet sitter', Icon: Pets },
+    { name: 'plumber', Icon: Plumbing },
+    { name: 'pool', Icon: Pool },
+    { name: 'repairs', Icon: Handyman },
   ];
 
   const storeItems = [
@@ -75,23 +88,16 @@ export default function ProfessionalsPage() {
       {/* Seção 3: lista horizontal de profissionais */}
       <div className="overflow-x-auto px-4 pb-2 cursor-grab no-scrollbar">
         <div className="flex space-x-5">
-          {works.map((file) => {
-            const name = file
-              .replace('icon_', '')
-              .replace(/\.[^/.]+$/, '')
-              .replace(/_/g, ' ');
-
-            return (
-              <div key={file} className="flex flex-col items-center">
-                <div className="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center mb-1 overflow-hidden">
-                  <Image src={`/works/${file}`} alt={name} width={24} height={24} />
-                </div>
-                <span className="text-[9px] text-[#6D6D6D] font-medium font-inter capitalize">
-                  {name}
-                </span>
+          {works.map(({ name, Icon }) => (
+            <div key={name} className="flex flex-col items-center">
+              <div className="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center mb-1 overflow-hidden">
+                <Icon fontSize="small" className="text-gray-600" />
               </div>
-            );
-          })}
+              <span className="text-[9px] text-[#6D6D6D] font-medium font-inter capitalize">
+                {name}
+              </span>
+            </div>
+          ))}
         </div>
       </div>
 
