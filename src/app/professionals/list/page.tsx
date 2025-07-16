@@ -48,7 +48,7 @@ export default function ProfessionalsListPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FDFDFB] px-4 py-6 pb-20 flex flex-col space-y-6">
+    <div className="min-h-screen bg-[#FDFDFB] px-4 py-6 pb-20 flex flex-col space-y-6 mt-4 mx-4">
 
       {/* Título e card de destaque fixos */}
       <div className="sticky top-0 bg-[#FDFDFB] space-y-6 pb-4 z-20">
