@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import {
   Search,
   ArrowForwardIos,
@@ -27,6 +27,11 @@ import {
 
 export default function ProfessionalsPage() {
   const [search, setSearch] = useState('');
+  const [dragging, setDragging] = useState(false);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const isPointerDown = useRef(false);
+  const startX = useRef(0);
+  const startScroll = useRef(0);
 
   const works = [
     { name: 'cleaner', Icon: CleaningServices },
@@ -60,6 +65,33 @@ export default function ProfessionalsPage() {
     'vaso.jpg',
   ];
 
+  const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    const container = scrollRef.current;
+    if (!container) return;
+    isPointerDown.current = true;
+    startX.current = e.clientX;
+    startScroll.current = container.scrollLeft;
+    setDragging(true);
+    container.setPointerCapture(e.pointerId);
+  };
+
+  const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (!isPointerDown.current) return;
+    const container = scrollRef.current;
+    if (!container) return;
+    const walk = e.clientX - startX.current;
+    container.scrollLeft = startScroll.current - walk;
+  };
+
+  const endDrag = (e: React.PointerEvent<HTMLDivElement>) => {
+    isPointerDown.current = false;
+    const container = scrollRef.current;
+    if (container) {
+      container.releasePointerCapture(e.pointerId);
+    }
+    setDragging(false);
+  };
+
   return (
     <div className="min-h-screen bg-[#FDFDFB] px-4 py-6 flex flex-col space-y-6 pb-20">
 
@@ -86,7 +118,14 @@ export default function ProfessionalsPage() {
       </div>
 
       {/* Seção 3: lista horizontal de profissionais */}
-      <div className="overflow-x-auto px-4 pb-2 cursor-grab no-scrollbar">
+      <div
+        ref={scrollRef}
+        className={`overflow-x-auto px-4 pb-2 no-scrollbar ${dragging ? 'cursor-grabbing' : 'cursor-grab'}`}
+        onPointerDown={handlePointerDown}
+        onPointerMove={handlePointerMove}
+        onPointerUp={endDrag}
+        onPointerLeave={endDrag}
+      >
         <div className="flex space-x-5">
           {works.map(({ name, Icon }) => (
             <div key={name} className="flex flex-col items-center">
