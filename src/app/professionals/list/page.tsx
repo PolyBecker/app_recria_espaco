@@ -56,7 +56,7 @@ export default function ProfessionalsListPage() {
 
 
   return (
-    <div className="min-h-screen bg-[#FDFDFB] px-4 py-6 pb-20 flex flex-col space-y-6">
+    <div className="min-h-screen bg-[#FDFDFB] px-4 py-6 pb-20 flex flex-col space-y-6 mt-4 mx-4">
 
 
       {/* Título e card de destaque fixos */}
@@ -125,26 +125,26 @@ export default function ProfessionalsListPage() {
               <h3 className="text-sm font-semibold text-[#484747] font-inter">{pro.name}</h3>
               <p className="text-xs text-gray-500 font-inter mb-1">{pro.description}</p>
               <Rating name={`rating-${pro.id}`} value={4} readOnly size="small" className="mb-1" />
+              <Button
+                variant="contained"
+                size="small"
+                sx={{
+                  backgroundColor: '#F88208',
+                  textTransform: 'none',
+                  fontWeight: 500,
+                  fontSize: '12px',
+                  padding: '4px 12px',
+                  '&:hover': {
+                    backgroundColor: '#FFA13F'
+                  },
+                  '&:active': {
+                    backgroundColor: '#FFA13F'
+                  }
+                }}
+              >
+                Ver perfil
+              </Button>
             </div>
-            <Button
-              variant="contained"
-              size="small"
-              sx={{
-                backgroundColor: '#F88208',
-                textTransform: 'none',
-                fontWeight: 500,
-                fontSize: '12px',
-                padding: '4px 12px',
-                '&:hover': {
-                  backgroundColor: '#FFA13F'
-                },
-                '&:active': {
-                  backgroundColor: '#FFA13F'
-                }
-              }}
-            >
-              Ver
-            </Button>
           </div>
         ))}
       </div>
