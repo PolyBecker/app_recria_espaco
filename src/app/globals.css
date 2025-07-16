@@ -50,3 +50,26 @@ textarea::placeholder {
 #__next-build-watcher {
   display: none !important;
 }
+
+/* Fade overlay for scroll containers */
+.scroll-mask {
+  position: relative;
+}
+.scroll-mask::before,
+.scroll-mask::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1.5rem;
+  pointer-events: none;
+  z-index: 10;
+}
+.scroll-mask::before {
+  top: 0;
+  background-image: linear-gradient(to bottom, #FDFDFB, transparent);
+}
+.scroll-mask::after {
+  bottom: 0;
+  background-image: linear-gradient(to top, #FDFDFB, transparent);
+}
