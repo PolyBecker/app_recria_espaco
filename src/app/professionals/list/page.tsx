@@ -1,11 +1,14 @@
 'use client';
 
+
 import Image from 'next/image';
 import { Button, Rating } from '@mui/material';
 import React, { useRef, useState } from 'react';
 
+
 export default function ProfessionalsListPage() {
   const [area] = useState('Pintor');
+
 
   const [dragging, setDragging] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -13,12 +16,14 @@ export default function ProfessionalsListPage() {
   const startY = useRef(0);
   const startScroll = useRef(0);
 
+
   const professionals = Array.from({ length: 15 }).map((_, i) => ({
     id: i + 1,
     name: `Profissional ${i + 1}`,
     photo: `/list_workers/worker${i + 1}.jpg`,
     description: 'Especialista em pintura residencial e comercial.'
   }));
+
 
   const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
     const container = scrollRef.current;
@@ -30,6 +35,7 @@ export default function ProfessionalsListPage() {
     container.setPointerCapture(e.pointerId);
   };
 
+
   const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
     if (!pointerDown.current) return;
     const container = scrollRef.current;
@@ -37,6 +43,7 @@ export default function ProfessionalsListPage() {
     const walk = e.clientY - startY.current;
     container.scrollTop = startScroll.current - walk;
   };
+
 
   const endDrag = (e: React.PointerEvent<HTMLDivElement>) => {
     pointerDown.current = false;
@@ -47,12 +54,15 @@ export default function ProfessionalsListPage() {
     setDragging(false);
   };
 
+
   return (
-    <div className="min-h-screen bg-[#FDFDFB] px-4 py-6 pb-20 flex flex-col space-y-6 mt-4 mx-4">
+    <div className="min-h-screen bg-[#FDFDFB] px-4 py-6 pb-20 flex flex-col space-y-6">
+
 
       {/* Título e card de destaque fixos */}
       <div className="sticky top-0 bg-[#FDFDFB] space-y-6 pb-4 z-20">
         <h1 className="text-[15px] font-medium text-[#484747] font-inter">{area}</h1>
+
 
         <div className="bg-white shadow rounded-xl p-4 flex items-center space-x-4">
           <div className="w-16 h-16 rounded-full overflow-hidden">
@@ -89,6 +99,7 @@ export default function ProfessionalsListPage() {
           </div>
         </div>
       </div>
+
 
       {/* Seção 3: Lista vertical de profissionais */}
       <div
@@ -140,3 +151,7 @@ export default function ProfessionalsListPage() {
     </div>
   );
 }
+
+
+
+
