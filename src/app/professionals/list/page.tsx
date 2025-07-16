@@ -74,6 +74,7 @@ export default function ProfessionalsListPage() {
             className="object-cover"
           />
         </div>
+        
         <div className="flex-1">
           <h2 className="text-sm font-semibold text-[#484747] font-inter">Carla Dias</h2>
           <p className="text-xs text-gray-500 font-inter mb-1">Especialista em pintura de interiores com 10 anos de experiência.</p>
