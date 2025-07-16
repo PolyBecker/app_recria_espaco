@@ -64,7 +64,6 @@ export default function ProfessionalsPage() {
     'cessto.jpg',
     'comoda.jpg',
     'espelho.jpg',
-    'pillow.png',
     'quadro.jpg',
     'sofa.jpg',
     'talher.jpg',
