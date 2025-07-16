@@ -2,13 +2,13 @@
 
 import Image from 'next/image';
 import { useState } from 'react';
-import { Search } from '@mui/icons-material';
+import { Search, ArrowForwardIos, Home, Build, SearchOutlined, ContentCut, Person } from '@mui/icons-material';
 
 export default function ProfessionalsPage() {
   const [search, setSearch] = useState('');
 
   return (
-    <div className="min-h-screen bg-[#FDFDFB] px-4 py-6 flex flex-col space-y-6">
+    <div className="min-h-screen bg-[#FDFDFB] px-4 py-6 flex flex-col space-y-6 pb-20">
 
       {/* Seção 1: perfil do usuário */}
       <div className="flex items-center space-x-4 px-4">
@@ -33,7 +33,7 @@ export default function ProfessionalsPage() {
       </div>
 
       {/* Seção 3: lista horizontal de profissionais */}
-      <div className="overflow-x-scroll px-4 pb-2 no-scrollbar">
+      <div className="overflow-x-auto px-4 pb-2 cursor-grab no-scrollbar">
         <div className="flex space-x-5">
           {Array.from({ length: 13 }).map((_, i) => (
             <div key={i} className="flex flex-col items-center">
@@ -53,17 +53,20 @@ export default function ProfessionalsPage() {
           <div className="flex-grow rounded-lg overflow-hidden">
             <Image src="/sofa1.jpg" alt="Sofá 1" width={500} height={120} className="object-cover w-full h-auto" />
           </div>
-          <div className="text-gray-400 text-xl">➡️</div>
+          <ArrowForwardIos fontSize="small" className="text-gray-400" />
           <div className="flex-grow rounded-lg overflow-hidden">
             <Image src="/sofa2.jpg" alt="Sofá 2" width={500} height={120} className="object-cover w-full h-auto" />
           </div>
         </div>
+        <button className="w-full mt-4 py-3 rounded-lg text-white font-semibold bg-[#F88208] shadow-md transition-colors duration-200 hover:bg-[#FFA13F] active:bg-[#FFA13F]">
+          Personalize com IA
+        </button>
       </div>
 
       {/* Seção 5: Novidades */}
       <div className="px-4">
         <h2 className="text-[15px] font-medium text-[#484747] font-inter mb-2">Novidades</h2>
-        <div className="flex space-x-4 overflow-x-scroll no-scrollbar">
+        <div className="flex space-x-4 overflow-x-auto cursor-grab no-scrollbar">
           {Array.from({ length: 10 }).map((_, i) => (
             <div key={i} className="w-28 flex-shrink-0 border rounded-xl p-2 text-center text-xs bg-white shadow">
               <div className="mb-1 w-full h-14 rounded overflow-hidden">
@@ -75,6 +78,15 @@ export default function ProfessionalsPage() {
             </div>
           ))}
         </div>
+      </div>
+
+      {/* Rodapé com ícones MUI */}
+      <div className="fixed bottom-0 left-0 right-0 h-16 bg-white flex items-center justify-around shadow-md rounded-t-xl px-4">
+        <Home className="text-gray-600" />
+        <Build className="text-gray-600" />
+        <SearchOutlined className="text-gray-600" />
+        <ContentCut className="text-gray-600" />
+        <Person className="text-gray-600" />
       </div>
     </div>
   );
