@@ -158,7 +158,7 @@ export default function ProfessionalsListPage() {
                     '&:active': {
                       backgroundColor: '#FFA13F'
                     },
-                    maxWidth: '200px'
+                    maxWidth: '160px'
                   }}
                 >
                   Ver perfil
