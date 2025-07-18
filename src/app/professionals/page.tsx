@@ -228,8 +228,16 @@ export default function ProfessionalsPage() {
             );
           })}
         </div>
+        <div className="flex justify-end mt-1">
+          <Link
+            href=""
+            className="text-[#484747] font-inter font-medium text-[11px] underline"
+          >
+            ver mais
+          </Link>
+        </div>
       </div>
-      {/* Rodapé com ícones MUI */}
+    {/* Rodapé com ícones MUI */}
       <div className="fixed bottom-0 left-0 right-0 h-16 bg-white flex items-center justify-around shadow-md rounded-t-xl px-4">
         <Home className="text-gray-600" />
         <Build className="text-gray-600" />
