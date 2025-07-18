@@ -4,10 +4,12 @@
 import Image from 'next/image';
 import { Button, Rating } from '@mui/material';
 import React, { useRef, useState } from 'react';
+import { useSearchParams } from 'next/navigation';
 
 
 export default function ProfessionalsListPage() {
-  const [area] = useState('Pintor');
+  const searchParams = useSearchParams();
+  const [area] = useState(searchParams.get('area') ?? 'Profissionais');
 
 
   const [dragging, setDragging] = useState(false);

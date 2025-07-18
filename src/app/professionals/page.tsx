@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { useRef, useState } from 'react';
 import {
   Search,
@@ -162,14 +163,18 @@ export default function ProfessionalsPage() {
       >
         <div className="flex space-x-5">
           {works.map(({ name, Icon }) => (
-            <div key={name} className="flex flex-col items-center">
+            <Link
+              key={name}
+              href={`/professionals/list?area=${encodeURIComponent(name)}`}
+              className="flex flex-col items-center"
+            >
               <div className="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center mb-1 overflow-hidden">
                 <Icon fontSize="small" className="text-gray-600" />
               </div>
               <span className="text-[9px] text-[#6D6D6D] font-medium font-inter capitalize">
                 {name}
               </span>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
