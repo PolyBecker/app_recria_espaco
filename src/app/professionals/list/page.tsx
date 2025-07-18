@@ -80,25 +80,33 @@ export default function ProfessionalsListPage() {
         <div className="flex-1 flex flex-col">
           <h2 className="text-sm font-semibold text-[#484747] font-inter">Carla Dias</h2>
           <p className="text-xs text-gray-500 font-inter mb-1">Especialista em pintura de interiores com 10 anos de experiência.</p>
-          <Rating name="highlight-rating" value={4} readOnly size="small" className="mb-2" />
-          <Button
-            variant="contained"
-            sx={{
-              backgroundColor: '#F88208',
-              textTransform: 'none',
-              fontWeight: 600,
-              '&:hover': {
-                backgroundColor: '#FFA13F'
-              },
-              '&:active': {
-                backgroundColor: '#FFA13F'
-              },
-              width: '70%'
-            }}
-            className="mx-auto"
-          >
-            Ver perfil
-          </Button>
+          <div className="flex flex-col">
+            <Rating
+              name="highlight-rating"
+              value={4}
+              readOnly
+              size="small"
+              className="mb-2"
+            />
+            <Button
+              variant="contained"
+              sx={{
+                backgroundColor: '#F88208',
+                textTransform: 'none',
+                fontWeight: 600,
+                '&:hover': {
+                  backgroundColor: '#FFA13F'
+                },
+                '&:active': {
+                  backgroundColor: '#FFA13F'
+                },
+                width: '70%'
+              }}
+              className="mx-auto"
+            >
+              Ver perfil
+            </Button>
+          </div>
           </div>
         </div>
       </div>
@@ -127,26 +135,34 @@ export default function ProfessionalsListPage() {
             <div className="flex-1">
               <h3 className="text-sm font-semibold text-[#484747] font-inter">{pro.name}</h3>
               <p className="text-xs text-gray-500 font-inter mb-1">{pro.description}</p>
-              <Rating name={`rating-${pro.id}`} value={4} readOnly size="small" className="mb-1" />
-              <Button
-                variant="contained"
-                size="small"
-                sx={{
-                  backgroundColor: '#F88208',
-                  textTransform: 'none',
-                  fontWeight: 500,
-                  fontSize: '12px',
-                  padding: '4px 12px',
-                  '&:hover': {
-                    backgroundColor: '#FFA13F'
-                  },
-                  '&:active': {
-                    backgroundColor: '#FFA13F'
-                  }
-                }}
-              >
-                Ver perfil
-              </Button>
+              <div className="flex flex-col">
+                <Rating
+                  name={`rating-${pro.id}`}
+                  value={4}
+                  readOnly
+                  size="small"
+                  className="mb-1"
+                />
+                <Button
+                  variant="contained"
+                  size="small"
+                  sx={{
+                    backgroundColor: '#F88208',
+                    textTransform: 'none',
+                    fontWeight: 500,
+                    fontSize: '12px',
+                    padding: '4px 12px',
+                    '&:hover': {
+                      backgroundColor: '#FFA13F'
+                    },
+                    '&:active': {
+                      backgroundColor: '#FFA13F'
+                    }
+                  }}
+                >
+                  Ver perfil
+                </Button>
+              </div>
             </div>
           </div>
         ))}
