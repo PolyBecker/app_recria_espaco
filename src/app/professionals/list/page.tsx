@@ -112,20 +112,21 @@ export default function ProfessionalsListPage() {
       </div>
 
 
-      {/* Seção 3: Lista vertical de profissionais */}
-      <div
-        ref={scrollRef}
-        className={`relative space-y-4 overflow-y-auto no-scrollbar flex-1 scroll-mask ${dragging ? 'cursor-grabbing' : 'cursor-grab'}`}
-        onPointerDown={handlePointerDown}
-        onPointerMove={handlePointerMove}
-        onPointerUp={endDrag}
-        onPointerLeave={endDrag}
-      >
-        {professionals.map((pro, i) => (
-          <div key={i} className="flex items-center bg-white p-4 rounded-xl shadow">
-            <div className="w-14 h-14 rounded-full overflow-hidden mr-4">
-              <Image
-                src={pro.photo}
+      {/* Seção 2: Lista vertical de profissionais */}
+      <div className="relative flex-1 scroll-mask">
+        <div
+          ref={scrollRef}
+          className={`space-y-4 overflow-y-auto no-scrollbar h-full ${dragging ? 'cursor-grabbing' : 'cursor-grab'}`}
+          onPointerDown={handlePointerDown}
+          onPointerMove={handlePointerMove}
+          onPointerUp={endDrag}
+          onPointerLeave={endDrag}
+        >
+          {professionals.map((pro, i) => (
+            <div key={i} className="flex items-center bg-white p-4 rounded-xl shadow">
+              <div className="w-14 h-14 rounded-full overflow-hidden mr-4">
+                <Image
+                  src={pro.photo}
                 alt={pro.name}
                 width={56}
                 height={56}
@@ -167,6 +168,7 @@ export default function ProfessionalsListPage() {
             </div>
           </div>
         ))}
+        </div>
       </div>
     </div>
   );
