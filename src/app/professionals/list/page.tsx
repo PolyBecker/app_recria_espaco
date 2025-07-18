@@ -9,7 +9,7 @@ import { useSearchParams } from 'next/navigation';
 
 export default function ProfessionalsListPage() {
   const searchParams = useSearchParams();
-  const [area] = useState(searchParams.get('area') ?? 'Profissionais');
+  const [area] = useState(searchParams.get('area') ?? 'Pintores');
 
 
   const [dragging, setDragging] = useState(false);
