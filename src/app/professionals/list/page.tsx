@@ -19,7 +19,7 @@ export default function ProfessionalsListPage() {
   const startScroll = useRef(0);
 
 
-  const professionals = Array.from({ length: 15 }).map((_, i) => ({
+  const professionals = Array.from({ length: 13 }).map((_, i) => ({
     id: i + 1,
     name: `Profissional ${i + 1}`,
     photo: `/list_workers/worker${i + 1}.jpg`,
