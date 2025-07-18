@@ -77,7 +77,7 @@ export default function ProfessionalsListPage() {
           />
         </div>
         
-        <div className="flex-1">
+        <div className="flex-1 flex flex-col">
           <h2 className="text-sm font-semibold text-[#484747] font-inter">Carla Dias</h2>
           <p className="text-xs text-gray-500 font-inter mb-1">Especialista em pintura de interiores com 10 anos de experiência.</p>
           <Rating name="highlight-rating" value={4} readOnly size="small" className="mb-2" />
