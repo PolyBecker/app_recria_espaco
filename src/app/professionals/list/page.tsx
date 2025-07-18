@@ -63,7 +63,7 @@ export default function ProfessionalsListPage() {
 
       {/* Título e card de destaque fixos */}
       <div className="sticky top-0 bg-[#FDFDFB] space-y-6 pb-4 z-20">
-        <h1 className="text-[15px] font-medium text-[#484747] font-inter">{area}</h1>
+        <h1 className="mt-4 text-[15px] font-medium text-[#484747] font-inter">{area}</h1>
 
 
         <div className="bg-white shadow rounded-xl p-4 flex items-center space-x-4">
@@ -80,7 +80,6 @@ export default function ProfessionalsListPage() {
         <div className="flex-1">
           <h2 className="text-sm font-semibold text-[#484747] font-inter">Carla Dias</h2>
           <p className="text-xs text-gray-500 font-inter mb-1">Especialista em pintura de interiores com 10 anos de experiência.</p>
-          <Rating name="highlight-rating" value={4} readOnly size="small" className="mb-2" />
           <Button
             variant="contained"
             sx={{
@@ -99,6 +98,7 @@ export default function ProfessionalsListPage() {
           >
             Ver perfil
           </Button>
+          <Rating name="highlight-rating" value={4} readOnly size="small" className="mb-2" />
           </div>
         </div>
       </div>
