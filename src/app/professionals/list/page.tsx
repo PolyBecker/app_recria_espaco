@@ -144,26 +144,6 @@ export default function ProfessionalsListPage() {
                   size="small"
                   className="mb-1"
                 />
-                <Button
-                  variant="contained"
-                  size="small"
-                  sx={{
-                    backgroundColor: '#F88208',
-                    textTransform: 'none',
-                    fontWeight: 500,
-                    fontSize: '12px',
-                    padding: '4px 12px',
-                    '&:hover': {
-                      backgroundColor: '#FFA13F'
-                    },
-                    '&:active': {
-                      backgroundColor: '#FFA13F'
-                    },
-                    maxWidth: '160px'
-                  }}
-                >
-                  Ver perfil
-                </Button>
               </div>
             </div>
           </div>
