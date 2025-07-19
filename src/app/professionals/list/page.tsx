@@ -59,7 +59,7 @@ export default function ProfessionalsListPage() {
 
 
   return (
-    <div className="min-h-screen bg-[#FDFDFB] px-4 py-6 pb-20 flex flex-col space-y-6 mt-4 mx-4">
+    <div className="min-h-screen bg-[#FDFDFB] px-4 py-6 flex flex-col space-y-6 mt-4 mx-4">
 
 
       {/* Título e card de destaque fixos */}
@@ -116,7 +116,7 @@ export default function ProfessionalsListPage() {
       {/* Seção 3: Lista vertical de profissionais */}
       <div
         ref={scrollRef}
-        className={`relative space-y-4 overflow-y-auto no-scrollbar flex-1 scroll-mask ${dragging ? 'cursor-grabbing' : 'cursor-grab'}`}
+        className={`relative space-y-4 overflow-y-auto no-scrollbar flex-1 scroll-mask pb-24 ${dragging ? 'cursor-grabbing' : 'cursor-grab'}`}
         onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}
         onPointerUp={endDrag}
