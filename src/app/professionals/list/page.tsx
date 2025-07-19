@@ -24,7 +24,8 @@ export default function ProfessionalsListPage() {
     id: i + 1,
     name: `Profissional ${i + 1}`,
     photo: `/list_workers/worker${i + 1}.jpg`,
-    description: 'Especialista em pintura residencial e comercial.'
+    description: 'Especialista em pintura residencial e comercial.',
+    hourlyRate: 'R$50.00/hora'
   }));
 
 
@@ -136,6 +137,7 @@ export default function ProfessionalsListPage() {
             <div className="flex-1">
               <h3 className="text-sm font-semibold text-[#484747] font-inter">{pro.name}</h3>
               <p className="text-xs text-gray-500 font-inter mb-1">{pro.description}</p>
+              <p className="text-xs text-gray-500 font-inter mb-1">{pro.hourlyRate}</p>
               <div className="flex flex-col">
                 <Rating
                   name={`rating-${pro.id}`}
