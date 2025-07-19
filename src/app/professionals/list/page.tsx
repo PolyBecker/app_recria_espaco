@@ -138,6 +138,7 @@ export default function ProfessionalsListPage() {
               <h3 className="text-sm font-semibold text-[#484747] font-inter">{pro.name}</h3>
               <p className="text-xs text-gray-500 font-inter mb-1">{pro.description}</p>
               <p className="text-xs text-gray-500 font-inter mb-1">{pro.hourlyRate}</p>
+              <p className="text-xs text-gray-500 font-inter mb-1">1.4km de distancia</p>
               <div className="flex flex-col">
                 <Rating
                   name={`rating-${pro.id}`}
