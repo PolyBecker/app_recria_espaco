@@ -4,7 +4,7 @@ import { Home, Build, SearchOutlined, ContentCut, Person } from '@mui/icons-mate
 
 export default function FooterIcons() {
   return (
-    <div className="fixed bottom-0 left-0 right-0 h-16 bg-white flex items-center justify-around shadow-md rounded-t-xl px-4">
+    <div className="fixed bottom-0 left-0 right-0 h-16 bg-white flex items-center justify-around shadow-md rounded-t-xl px-4 z-30">
       <Link href="">
         <Home className="text-gray-600" />
       </Link>
