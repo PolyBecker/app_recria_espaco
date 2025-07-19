@@ -20,6 +20,7 @@ import {
   Pool,
   Handyman,
 } from '@mui/icons-material';
+import FooterIcons from '../components/footer_icons';
 
 export default function ProfessionalsPage() {
   const [search, setSearch] = useState('');
@@ -232,6 +233,8 @@ export default function ProfessionalsPage() {
           </Link>
         </div>
       </div>
+      {/* Rodapé com ícones MUI */}
+      <FooterIcons />
     </div>
   );
 }
