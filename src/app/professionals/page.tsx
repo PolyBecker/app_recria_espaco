@@ -6,11 +6,6 @@ import { useRef, useState } from 'react';
 import {
   Search,
   ArrowForwardIos,
-  Home,
-  Build,
-  SearchOutlined,
-  ContentCut,
-  Person,
   CleaningServices,
   ElectricalServices,
   Weekend,
@@ -25,6 +20,7 @@ import {
   Pool,
   Handyman,
 } from '@mui/icons-material';
+import FooterIcons from '../components/footer_icons';
 
 export default function ProfessionalsPage() {
   const [search, setSearch] = useState('');
@@ -238,23 +234,7 @@ export default function ProfessionalsPage() {
         </div>
       </div>
       {/* Rodapé com ícones MUI */}
-      <div className="fixed bottom-0 left-0 right-0 h-16 bg-white flex items-center justify-around shadow-md rounded-t-xl px-4">
-        <Link href="">
-          <Home className="text-gray-600" />
-        </Link>
-        <Link href="">
-          <Build className="text-gray-600" />
-        </Link>
-        <Link href="">
-          <SearchOutlined className="text-gray-600" />
-        </Link>
-        <Link href="">
-          <ContentCut className="text-gray-600" />
-        </Link>
-        <Link href="">
-          <Person className="text-gray-600" />
-        </Link>
-      </div>
+      <FooterIcons />
     </div>
   );
 }
