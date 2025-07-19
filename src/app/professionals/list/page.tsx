@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { Button, Rating } from '@mui/material';
 import React, { useRef, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
+import FooterIcons from '../../components/footer_icons';
 
 
 export default function ProfessionalsListPage() {
@@ -168,6 +169,8 @@ export default function ProfessionalsListPage() {
           </div>
         ))}
       </div>
+      {/* Rodapé com ícones MUI */}
+      <FooterIcons />
     </div>
   );
 }
