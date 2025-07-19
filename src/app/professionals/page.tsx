@@ -237,13 +237,23 @@ export default function ProfessionalsPage() {
           </Link>
         </div>
       </div>
-    {/* Rodapé com ícones MUI */}
+      {/* Rodapé com ícones MUI */}
       <div className="fixed bottom-0 left-0 right-0 h-16 bg-white flex items-center justify-around shadow-md rounded-t-xl px-4">
-        <Home className="text-gray-600" />
-        <Build className="text-gray-600" />
-        <SearchOutlined className="text-gray-600" />
-        <ContentCut className="text-gray-600" />
-        <Person className="text-gray-600" />
+        <Link href="">
+          <Home className="text-gray-600" />
+        </Link>
+        <Link href="">
+          <Build className="text-gray-600" />
+        </Link>
+        <Link href="">
+          <SearchOutlined className="text-gray-600" />
+        </Link>
+        <Link href="">
+          <ContentCut className="text-gray-600" />
+        </Link>
+        <Link href="">
+          <Person className="text-gray-600" />
+        </Link>
       </div>
     </div>
   );
