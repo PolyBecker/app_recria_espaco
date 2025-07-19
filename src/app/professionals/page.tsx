@@ -228,7 +228,7 @@ export default function ProfessionalsPage() {
             );
           })}
         </div>
-        <div className="flex justify-end mt-1">
+        <div className="flex justify-end mt-2">
           <Link
             href=""
             className="text-[#484747] font-inter font-medium text-[11px] underline"
