@@ -66,10 +66,16 @@ export default function LoginPage() {
       <div className="flex flex-col items-center gap-4 mt-10">
         <span className="text-sm text-gray-600">Ou Continue com:</span>
         <div className="flex gap-4">
-          <img src="/logo_icon_apple.svg" alt="Apple" className="w-10 h-10" />
-          <img src="/logo_icon_facebook.svg" alt="Facebook" className="w-10 h-10" />
-          <img src="/logo_icon_google.svg" alt="Google" className="w-10 h-10" />
-        </div>
+  <a href="#">
+    <img src="/logo_icon_apple.svg" alt="Apple" className="w-10 h-10" />
+  </a>
+  <a href="#">
+    <img src="/logo_icon_facebook.svg" alt="Facebook" className="w-10 h-10" />
+  </a>
+  <a href="#">
+    <img src="/logo_icon_google.svg" alt="Google" className="w-10 h-10" />
+  </a>
+</div>
       </div>
     </div>
   );
