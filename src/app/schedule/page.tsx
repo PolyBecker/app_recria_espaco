@@ -5,6 +5,7 @@ import { IconButton } from '@mui/material';
 import StarIcon from '@mui/icons-material/Star';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 
 export default function ScheduleServicePage() {
   const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
@@ -261,6 +262,9 @@ export default function ScheduleServicePage() {
                       value={notes}
                       onChange={(e) => setNotes(e.target.value)}
                     />
+                    <a href="" className="mt-2 inline-block text-gray-500">
+                      <CloudUploadIcon />
+                    </a>
                   </div>
                   <button
                     className="mt-4 w-full bg-[#F88208] text-white font-medium py-2 rounded-lg hover:bg-[#FFA13F] active:bg-[#FFA13F]"
