@@ -115,7 +115,7 @@ export default function ScheduleServicePage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FDFDFB] px-4 py-6 text-[#484747]">
+    <div className="min-h-screen bg-[#FDFDFB] px-4 pt-6 pb-24 text-[#484747]">
       {/* Header do profissional */}
       <div className="bg-white rounded-xl shadow-md p-4 flex items-center gap-4">
         <img
