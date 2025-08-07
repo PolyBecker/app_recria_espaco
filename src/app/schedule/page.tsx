@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { IconButton } from '@mui/material';
 import StarIcon from '@mui/icons-material/Star';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
@@ -9,6 +9,11 @@ import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 export default function ScheduleServicePage() {
   const [selectedDate, setSelectedDate] = useState(15);
   const [selectedHour, setSelectedHour] = useState('08:00');
+  const [reviewDragging, setReviewDragging] = useState(false);
+  const reviewsRef = useRef<HTMLDivElement>(null);
+  const reviewPointerDown = useRef(false);
+  const reviewStartX = useRef(0);
+  const reviewStartScroll = useRef(0);
   const hours = [
     '08:00',
     '10:00',
@@ -19,6 +24,78 @@ export default function ScheduleServicePage() {
     '16:30',
     '17:00',
   ];
+
+  const reviews = [
+    {
+      id: 1,
+      name: 'Jen Wilkinson',
+      img: '/list_workers/worker1.jpg',
+      time: '• 1 month ago',
+      text: 'Interdum et malesuada fames ac ante ipsum primis in faucibus',
+    },
+    {
+      id: 2,
+      name: 'Peler Newman',
+      img: '/list_workers/worker2.jpg',
+      time: '• 2 months ago',
+      text: 'Interdum et malesuada fames ac ante ipsum primis in faucibus',
+    },
+    {
+      id: 3,
+      name: 'Clara Smith',
+      img: '/list_workers/worker3.jpg',
+      time: '• 3 months ago',
+      text: 'Interdum et malesuada fames ac ante ipsum primis in faucibus',
+    },
+    {
+      id: 4,
+      name: 'John Doe',
+      img: '/list_workers/worker4.jpg',
+      time: '• 4 months ago',
+      text: 'Interdum et malesuada fames ac ante ipsum primis in faucibus',
+    },
+    {
+      id: 5,
+      name: 'Maria Lee',
+      img: '/list_workers/worker5.jpg',
+      time: '• 5 months ago',
+      text: 'Interdum et malesuada fames ac ante ipsum primis in faucibus',
+    },
+    {
+      id: 6,
+      name: 'Lucas Silva',
+      img: '/list_workers/worker6.jpg',
+      time: '• 6 months ago',
+      text: 'Interdum et malesuada fames ac ante ipsum primis in faucibus',
+    },
+  ];
+
+  const handleReviewPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    const container = reviewsRef.current;
+    if (!container) return;
+    reviewPointerDown.current = true;
+    reviewStartX.current = e.clientX;
+    reviewStartScroll.current = container.scrollLeft;
+    setReviewDragging(true);
+    container.setPointerCapture(e.pointerId);
+  };
+
+  const handleReviewPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (!reviewPointerDown.current) return;
+    const container = reviewsRef.current;
+    if (!container) return;
+    const walk = e.clientX - reviewStartX.current;
+    container.scrollLeft = reviewStartScroll.current - walk;
+  };
+
+  const endReviewDrag = (e: React.PointerEvent<HTMLDivElement>) => {
+    reviewPointerDown.current = false;
+    const container = reviewsRef.current;
+    if (container) {
+      container.releasePointerCapture(e.pointerId);
+    }
+    setReviewDragging(false);
+  };
 
   return (
     <div className="min-h-screen bg-[#FDFDFB] px-4 py-6 text-[#484747]">
@@ -48,19 +125,20 @@ export default function ScheduleServicePage() {
           <span className="text-xs text-gray-500">(30 avaliações)</span>
         </div>
         <div className="mt-3 h-3 w-24 bg-[#F88208] rounded-sm"></div>
-        <div className="mt-4 flex gap-4">
-          {[1, 2].map((item) => (
-            <div key={item} className="flex-1 text-xs text-gray-600">
-              <img
-                src={`/list_workers/worker${item}.jpg`}
-                alt="User"
-                className="w-8 h-8 rounded-full mb-1"
-              />
-              <p className="font-medium text-gray-800 text-xs">{item === 1 ? 'Jen wilkdoson' : 'Peler Newman'}</p>
-              <p className="text-[10px] text-gray-500">• 1 month ago</p>
-              <p className="text-[11px] mt-1 leading-tight">
-                nterdum et malesuada fames ac ante ipsum primis in faucibus
-              </p>
+        <div
+          ref={reviewsRef}
+          className={`mt-4 flex gap-4 overflow-x-auto no-scrollbar ${reviewDragging ? 'cursor-grabbing' : 'cursor-grab'}`}
+          onPointerDown={handleReviewPointerDown}
+          onPointerMove={handleReviewPointerMove}
+          onPointerUp={endReviewDrag}
+          onPointerLeave={endReviewDrag}
+        >
+          {reviews.map(({ id, name, img, time, text }) => (
+            <div key={id} className="w-44 flex-shrink-0 text-xs text-gray-600">
+              <img src={img} alt={name} className="w-8 h-8 rounded-full mb-1" />
+              <p className="font-medium text-gray-800 text-xs">{name}</p>
+              <p className="text-[10px] text-gray-500">{time}</p>
+              <p className="text-[11px] mt-1 leading-tight">{text}</p>
             </div>
           ))}
         </div>
