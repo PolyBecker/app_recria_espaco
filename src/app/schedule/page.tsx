@@ -115,7 +115,7 @@ export default function ScheduleServicePage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FDFDFB] px-4 pt-6 pb-24 text-[#484747]">
+    <div className="min-h-screen bg-[#FDFDFB] px-4 pt-6 pb-24 text-[#484884]">
       {/* Header do profissional */}
       <div className="bg-white rounded-xl shadow-md p-4 flex items-center gap-4">
         <img
@@ -259,15 +259,15 @@ export default function ScheduleServicePage() {
                       value={notes}
                       onChange={(e) => setNotes(e.target.value)}
                     />
+                    <a href="" className="mt-2 inline-block text-gray-500">
+                      <CloudUploadIcon />
+                    </a>
+                    <button
+                      className="mt-2 w-full bg-[#F88208] text-white font-medium py-2 rounded-lg hover:bg-[#FFA13F] active:bg-[#FFA13F]"
+                    >
+                      Contratar
+                    </button>
                   </div>
-                  <a href="" className="mt-2 inline-block text-gray-500">
-                    <CloudUploadIcon />
-                  </a>
-                  <button
-                    className="mt-2 w-full bg-[#F88208] text-white font-medium py-2 rounded-lg hover:bg-[#FFA13F] active:bg-[#FFA13F]"
-                  >
-                    Contratar
-                  </button>
                 </>
               )}
             </>
