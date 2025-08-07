@@ -14,10 +14,6 @@ export default function ScheduleServicePage() {
     '10:00',
     '14:00',
     '14:30',
-    '15:00',
-    '16:00',
-    '16:30',
-    '17:00',
   ];
 
   return (
