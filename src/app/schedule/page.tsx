@@ -7,19 +7,30 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
 export default function ScheduleServicePage() {
-  const [selectedDate, setSelectedDate] = useState(15);
-  const [selectedHour, setSelectedHour] = useState('08:00');
+  const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
+  const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
+  const [selectedDay, setSelectedDay] = useState<number | null>(null);
+  const [selectedHour, setSelectedHour] = useState<string | null>(null);
   const [reviewDragging, setReviewDragging] = useState(false);
   const reviewsRef = useRef<HTMLDivElement>(null);
   const reviewPointerDown = useRef(false);
   const reviewStartX = useRef(0);
   const reviewStartScroll = useRef(0);
-  const hours = [
+  const allHours = [
     '08:00',
     '10:00',
     '14:00',
     '14:30',
   ];
+
+  const getAvailableHours = (date: Date) => {
+    return allHours.filter((_, idx) => (date.getDate() + idx) % 2 === 0);
+  };
+
+  const availableHours =
+    selectedDay !== null
+      ? getAvailableHours(new Date(currentYear, currentMonth, selectedDay))
+      : [];
 
   const reviews = [
     {
@@ -143,47 +154,92 @@ export default function ScheduleServicePage() {
       {/* Calendário */}
       <div className="mt-8 border border-orange-300 rounded-xl p-4">
         <div className="flex justify-between items-center mb-4">
-          <IconButton size="small">
+          <IconButton size="small" onClick={() => {
+            if (currentMonth === 0) {
+              setCurrentMonth(11);
+              setCurrentYear((y) => y - 1);
+            } else {
+              setCurrentMonth(currentMonth - 1);
+            }
+            setSelectedDay(null);
+            setSelectedHour(null);
+          }}>
             <ArrowBackIosIcon fontSize="small" />
           </IconButton>
-          <p className="font-medium">Janeiro 2024</p>
-          <IconButton size="small">
+          <p className="font-medium">
+            {new Date(currentYear, currentMonth).toLocaleString('pt-BR', {
+              month: 'long',
+              year: 'numeric',
+            })}
+          </p>
+          <IconButton size="small" onClick={() => {
+            if (currentMonth === 11) {
+              setCurrentMonth(0);
+              setCurrentYear((y) => y + 1);
+            } else {
+              setCurrentMonth(currentMonth + 1);
+            }
+            setSelectedDay(null);
+            setSelectedHour(null);
+          }}>
             <ArrowForwardIosIcon fontSize="small" />
           </IconButton>
         </div>
         <div className="grid grid-cols-7 gap-2 text-sm text-center">
-          {[...Array(31)].map((_, i) => (
-            <button
-              key={i + 1}
-              onClick={() => setSelectedDate(i + 1)}
-              className={`p-2 rounded-full ${
-                selectedDate === i + 1 ? 'bg-orange-200' : 'hover:bg-orange-100'
-              }`}
-            >
-              {i + 1}
-            </button>
-          ))}
+          {[
+            ...Array(new Date(currentYear, currentMonth, 1).getDay()).fill(null),
+            ...Array(new Date(currentYear, currentMonth + 1, 0).getDate())
+              .fill(null)
+              .map((_, i) => i + 1),
+          ].map((day, idx) =>
+            day ? (
+              <button
+                key={idx}
+                onClick={() => {
+                  setSelectedDay(day);
+                  setSelectedHour(null);
+                }}
+                className={`p-2 rounded-full ${
+                  selectedDay === day
+                    ? 'bg-orange-200'
+                    : 'hover:bg-orange-100'
+                }`}
+              >
+                {day}
+              </button>
+            ) : (
+              <span key={idx}></span>
+            ),
+          )}
         </div>
       </div>
 
       {/* Horários */}
       <div className="mt-6">
         <p className="font-semibold text-base">Escolha os horários</p>
-        <div className="flex gap-4 mt-3">
-          {hours.map((hour) => (
-            <button
-              key={hour}
-              onClick={() => setSelectedHour(hour)}
-              className={`px-4 py-2 rounded-lg border text-sm font-medium ${
-                selectedHour === hour
-                  ? 'bg-orange-200 border-orange-300'
-                  : 'bg-white border-gray-200'
-              }`}
-            >
-              {hour}
-            </button>
-          ))}
-        </div>
+        {selectedDay ? (
+          availableHours.length > 0 ? (
+            <div className="flex gap-4 mt-3 flex-wrap">
+              {availableHours.map((hour) => (
+                <button
+                  key={hour}
+                  onClick={() => setSelectedHour(hour)}
+                  className={`px-4 py-2 rounded-lg border text-sm font-medium ${
+                    selectedHour === hour
+                      ? 'bg-orange-200 border-orange-300'
+                      : 'bg-white border-gray-200'
+                  }`}
+                >
+                  {hour}
+                </button>
+              ))}
+            </div>
+          ) : (
+            <p className="text-sm text-gray-500 mt-3">Nenhum horário disponível</p>
+          )
+        ) : (
+          <p className="text-sm text-gray-500 mt-3">Selecione um dia</p>
+        )}
       </div>
     </div>
   );
