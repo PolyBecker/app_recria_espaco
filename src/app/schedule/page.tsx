@@ -5,12 +5,20 @@ import { IconButton } from '@mui/material';
 import StarIcon from '@mui/icons-material/Star';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import Image from 'next/image';
 
 export default function ScheduleServicePage() {
   const [selectedDate, setSelectedDate] = useState(15);
   const [selectedHour, setSelectedHour] = useState('08:00');
-  const hours = ['08:00', '10:00'];
+  const hours = [
+    '08:00',
+    '10:00',
+    '14:00',
+    '14:30',
+    '15:00',
+    '16:00',
+    '16:30',
+    '17:00',
+  ];
 
   return (
     <div className="min-h-screen bg-[#FDFDFB] px-4 py-6 text-[#484747]">
