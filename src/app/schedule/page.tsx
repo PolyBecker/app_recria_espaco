@@ -6,6 +6,7 @@ import StarIcon from '@mui/icons-material/Star';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
+import FooterIcons from '../components/footer_icons';
 
 export default function ScheduleServicePage() {
   const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
@@ -277,6 +278,7 @@ export default function ScheduleServicePage() {
           <p className="text-sm text-gray-500 mt-3">Selecione um dia</p>
         )}
       </div>
+      <FooterIcons />
     </div>
   );
 }
