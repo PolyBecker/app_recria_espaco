@@ -22,7 +22,7 @@ export default function ScheduleServicePage() {
           className="w-16 h-16 rounded-full object-cover"
         />
         <div className="flex-1">
-          <p className="font-bold text-base">Daniel Moreno</p>
+          <p className="font-bold text-base">Daniel Modeno</p>
           <p className="text-sm text-gray-600">R$ 40/hora</p>
           <p className="text-sm text-gray-500">3,2 miles de distância</p>
         </div>
