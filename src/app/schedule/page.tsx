@@ -27,6 +27,13 @@ export default function ScheduleServicePage() {
     '17:00',
   ];
 
+  const servicePrice = 280;
+  const serviceDuration = 1;
+  const formattedTotal = servicePrice.toLocaleString('pt-BR', {
+    style: 'currency',
+    currency: 'BRL',
+  });
+
   const getAvailableHours = (date: Date) => {
     return allHours.filter((_, idx) => (date.getDate() + idx) % 2 === 0);
   };
@@ -223,21 +230,28 @@ export default function ScheduleServicePage() {
         <p className="font-semibold text-base">Escolha os horários</p>
         {selectedDay ? (
           availableHours.length > 0 ? (
-            <div className="flex gap-4 mt-3 flex-wrap">
-              {availableHours.map((hour) => (
-                <button
-                  key={hour}
-                  onClick={() => setSelectedHour(hour)}
-                  className={`px-4 py-2 rounded-lg border text-sm font-medium ${
-                    selectedHour === hour
-                      ? 'bg-orange-200 border-orange-300'
-                      : 'bg-white border-gray-200'
-                  }`}
-                >
-                  {hour}
-                </button>
-              ))}
-            </div>
+            <>
+              <div className="flex gap-4 mt-3 flex-wrap">
+                {availableHours.map((hour) => (
+                  <button
+                    key={hour}
+                    onClick={() => setSelectedHour(hour)}
+                    className={`px-4 py-2 rounded-lg border text-sm font-medium ${
+                      selectedHour === hour
+                        ? 'bg-orange-200 border-orange-300'
+                        : 'bg-white border-gray-200'
+                    }`}
+                  >
+                    {hour}
+                  </button>
+                ))}
+              </div>
+              {selectedHour && (
+                <p className="mt-4 text-sm font-semibold">
+                  Total: {formattedTotal} / {serviceDuration}h
+                </p>
+              )}
+            </>
           ) : (
             <p className="text-sm text-gray-500 mt-3">Nenhum horário disponível</p>
           )
