@@ -11,6 +11,7 @@ export default function ScheduleServicePage() {
   const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
   const [selectedDay, setSelectedDay] = useState<number | null>(null);
   const [selectedHour, setSelectedHour] = useState<string | null>(null);
+  const [notes, setNotes] = useState('');
   const [reviewDragging, setReviewDragging] = useState(false);
   const reviewsRef = useRef<HTMLDivElement>(null);
   const reviewPointerDown = useRef(false);
@@ -247,9 +248,21 @@ export default function ScheduleServicePage() {
                 ))}
               </div>
               {selectedHour && (
-                <p className="mt-4 text-sm font-semibold">
-                  Total: {formattedTotal} / {serviceDuration}h
-                </p>
+                <>
+                  <p className="mt-4 text-sm font-semibold">
+                    Total: {formattedTotal} / {serviceDuration}h
+                  </p>
+                  <div className="mt-4 border border-orange-300 rounded-xl p-4">
+                    <textarea
+                      className="w-full text-sm resize-y outline-none"
+                      rows={3}
+                      maxLength={500}
+                      placeholder="Adicione observações (máx. 500 caracteres)"
+                      value={notes}
+                      onChange={(e) => setNotes(e.target.value)}
+                    />
+                  </div>
+                </>
               )}
             </>
           ) : (
