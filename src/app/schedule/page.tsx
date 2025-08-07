@@ -258,6 +258,11 @@ export default function ScheduleServicePage() {
                       onChange={(e) => setNotes(e.target.value)}
                     />
                   </div>
+                  <button
+                    className="mt-4 w-full bg-[#F88208] text-white font-medium py-2 rounded-lg hover:bg-[#FFA13F] active:bg-[#FFA13F]"
+                  >
+                    contratar
+                  </button>
                 </>
               )}
             </>
