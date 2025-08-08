@@ -35,17 +35,24 @@ export default function AiPersonalizationPage() {
 
         {/* Carrossel horizontal */}
         <div className="flex gap-4 overflow-x-auto no-scrollbar pb-2">
-          {[1, 2].map((i) => (
-            <div key={i} className="min-w-[170px] rounded-lg overflow-hidden flex-shrink-0">
-              <Image
-                src={`/ai_results/ai_result${i}.jpg`}
-                alt={`Resultado ${i}`}
-                width={170}
-                height={120}
-                className="object-cover w-full h-auto"
-              />
-            </div>
-          ))}
+          <div className="min-w-[170px] rounded-lg overflow-hidden flex-shrink-0">
+            <Image
+              src="/place_user_before.png"
+              alt="Espaço do usuário antes"
+              width={170}
+              height={120}
+              className="object-cover w-full h-auto"
+            />
+          </div>
+          <div className="min-w-[170px] rounded-lg overflow-hidden flex-shrink-0">
+            <Image
+              src="/place_user_after.png"
+              alt="Espaço do usuário depois"
+              width={170}
+              height={120}
+              className="object-cover w-full h-auto"
+            />
+          </div>
           <div className="flex items-center justify-center min-w-[40px]">
             <ChevronRight className="text-[#484747]" />
           </div>
@@ -54,8 +61,8 @@ export default function AiPersonalizationPage() {
         {/* Imagem destaque */}
         <div className="mt-4 rounded-lg overflow-hidden">
           <Image
-            src="/ai_results/ai_result_main.jpg"
-            alt="Resultado principal"
+            src="/place_user_after_bigger.png"
+            alt="Espaço do usuário depois - destaque"
             width={300}
             height={200}
             className="w-full object-cover"
