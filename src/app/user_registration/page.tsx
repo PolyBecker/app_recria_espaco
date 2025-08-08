@@ -23,7 +23,6 @@ type FormValues = {
 const ORANGE_MAIN = '#F88208';
 const ORANGE_HOVER = '#FFA13F';
 const FIELD_BORDER = '#FFEDCF';
-const BACKGROUND_COLOR = '#FDFDFB';
 
 export default function UserRegistrationPage() {
   const {
@@ -50,11 +49,7 @@ export default function UserRegistrationPage() {
   };
 
   return (
-    <Container
-      component="main"
-      maxWidth="sm"
-      sx={{ py: { xs: 3, md: 6 }, bgcolor: BACKGROUND_COLOR, minHeight: '100vh' }}
-    >
+    <Container component="main" maxWidth="sm" sx={{ py: { xs: 3, md: 6 } }}>
       <Typography
         variant="subtitle1"
         sx={{ fontWeight: 600, color: '#484747', mb: 2 }}
