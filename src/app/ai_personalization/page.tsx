@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ChevronRight } from '@mui/icons-material';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
+import DownloadIcon from '@mui/icons-material/Download';
 import FooterIcons from '@/app/components/footer_icons';
 import { useState } from 'react';
 
@@ -67,14 +68,21 @@ export default function AiPersonalizationPage() {
           </div>
 
           {/* Imagem destaque */}
-          <div className="mt-4 rounded-lg overflow-hidden">
-            <Image
-              src="/place_user_after_bigger.png"
-              alt="Espaço do usuário depois - destaque"
-              width={300}
-              height={200}
-              className="w-full object-cover"
-            />
+          <div className="mt-4">
+            <div className="rounded-lg overflow-hidden">
+              <Image
+                src="/place_user_after_bigger.png"
+                alt="Espaço do usuário depois - destaque"
+                width={300}
+                height={200}
+                className="w-full object-cover"
+              />
+            </div>
+            <div className="mt-2">
+              <Link href="#">
+                <DownloadIcon className="text-[#484747]" />
+              </Link>
+            </div>
           </div>
         </div>
       )}
