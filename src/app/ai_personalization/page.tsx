@@ -2,7 +2,8 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { ChevronRight, Upload } from '@mui/icons-material';
+import { ChevronRight } from '@mui/icons-material';
+import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import FooterIcons from '@/app/components/footer_icons';
 
 export default function AiPersonalizationPage() {
@@ -22,7 +23,7 @@ export default function AiPersonalizationPage() {
       {/* Upload + Botão */}
       <div className="flex items-center justify-between mt-4">
         <Link href="#">
-          <Upload className="text-[#484747]" fontSize="medium" />
+          <CloudUploadIcon className="text-[#484747]" fontSize="medium" />
         </Link>
         <button className="bg-[#F88208] hover:bg-[#FFA13F] active:bg-[#FFA13F] text-white font-semibold py-2 px-6 rounded-lg shadow-md text-sm">
           Enviar
@@ -44,6 +45,9 @@ export default function AiPersonalizationPage() {
               className="object-cover w-full h-auto"
             />
           </div>
+          <div className="flex items-center justify-center min-w-[40px]">
+            <ChevronRight className="text-[#484747]" />
+          </div>
           <div className="min-w-[170px] rounded-lg overflow-hidden flex-shrink-0">
             <Image
               src="/place_user_after.png"
@@ -52,9 +56,6 @@ export default function AiPersonalizationPage() {
               height={120}
               className="object-cover w-full h-auto"
             />
-          </div>
-          <div className="flex items-center justify-center min-w-[40px]">
-            <ChevronRight className="text-[#484747]" />
           </div>
         </div>
 
