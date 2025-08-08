@@ -62,6 +62,13 @@ export default function LoginPage() {
         </a>
       </form>
 
+      <a
+        href="#"
+        className="w-full max-w-xs text-center mt-4 text-base text-gray-600 underline"
+      >
+        Cadastre-se
+      </a>
+
       {/* Social login */}
       <div className="flex flex-col items-center gap-4 mt-10">
         <span className="text-sm text-gray-600">Ou Continue com:</span>
