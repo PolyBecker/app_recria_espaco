@@ -9,11 +9,9 @@ import {
   Button,
   Chip,
   Container,
-  InputAdornment,
   Paper,
   Rating,
   Stack,
-  TextField,
   Typography,
   BottomNavigation,
   BottomNavigationAction,
@@ -228,23 +226,16 @@ export default function SearchProfessionalsPage() {
       </div>
 
       {/* Busca */}
-      <TextField
-        placeholder="Pintor"
-        fullWidth
-        variant="outlined"
-        InputProps={{
-          endAdornment: (
-            <InputAdornment position="end">
-              <SearchRoundedIcon />
-            </InputAdornment>
-          ),
-        }}
-        sx={{
-          bgcolor: "#FFFFFF",
-          borderRadius: 3,
-          "& fieldset": { borderColor: "#E0E0E0" },
-        }}
-      />
+      <div className="flex justify-start px-4">
+        <div className="flex items-center w-[70%] bg-white rounded-full px-4 py-2 shadow">
+          <input
+            type="text"
+            placeholder="Pintor"
+            className="flex-grow bg-transparent outline-none text-sm font-inter"
+          />
+          <SearchRoundedIcon className="text-gray-500" fontSize="small" />
+        </div>
+      </div>
 
       {/* Destaque */}
       {featured && <FeaturedCard pro={featured} />}
