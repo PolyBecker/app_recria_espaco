@@ -8,7 +8,6 @@ import {
   Button,
   Chip,
   Container,
-  Divider,
   InputAdornment,
   Paper,
   Rating,
@@ -166,10 +165,21 @@ export default function SearchProfessionalsPage() {
       }}
     >
       {/* Cabeçalho */}
-      <Stack direction="row" spacing={1.5} alignItems="center" sx={{ px: 0.5, pt: 1 }}>
-        <Avatar sx={{ width: 32, height: 32 }}>L</Avatar>
-        <Typography variant="h5" fontWeight={800}>
-          Olá, Lucas
+      <Stack direction="row" spacing={2} alignItems="center" sx={{ px: 2 }}>
+        <Avatar
+          src="/current_user.avif"
+          alt="User"
+          sx={{ width: 34, height: 34 }}
+        />
+        <Typography
+          sx={{
+            fontSize: 20,
+            fontWeight: 700,
+            color: "#484747",
+            fontFamily: "Inter, sans-serif",
+          }}
+        >
+          user-name
         </Typography>
       </Stack>
 
