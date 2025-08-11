@@ -61,6 +61,13 @@ export default function SearchProfessionalsPage() {
   return (
     <div className="min-h-screen bg-[#FDFDFB] px-4 py-6 flex flex-col space-y-0 mt-0 mx-0 pb-0">
       <div className="sticky top-0 bg-[#FDFDFB] space-y-6 pb-4 z-20">
+        <div className="flex items-center space-x-4 px-4">
+          <div className="w-[34px] h-[34px] rounded-full overflow-hidden">
+            <Image src="/current_user.avif" alt="User" width={34} height={34} />
+          </div>
+          <span className="text-[20px] font-bold text-[#484747] font-inter">user-name</span>
+        </div>
+
         <div className="flex justify-start px-4">
           <div className="flex items-center w-[70%] bg-white rounded-full px-4 py-2 shadow">
             <input
