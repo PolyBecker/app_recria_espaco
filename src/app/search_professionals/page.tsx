@@ -1,5 +1,6 @@
 // pauli/meu-primeiro-projeto/src/app/search_professionals/page.tsx
 
+
 import * as React from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -9,9 +10,11 @@ import {
   Button,
   Chip,
   Container,
+  InputAdornment,
   Paper,
   Rating,
   Stack,
+  TextField,
   Typography,
   BottomNavigation,
   BottomNavigationAction,
@@ -22,12 +25,14 @@ import BuildRoundedIcon from "@mui/icons-material/BuildRounded";
 import PersonRoundedIcon from "@mui/icons-material/PersonRounded";
 import StarRoundedIcon from "@mui/icons-material/StarRounded";
 
+
 export const metadata = {
   title: "Buscar profissionais | Recria Espaço",
   description:
     "Lista e busca de profissionais por proximidade com avaliações e preço/hora.",
   robots: { index: false },
 };
+
 
 // --- Tipos e dados mockados para layout ---
 interface Professional {
@@ -40,6 +45,7 @@ interface Professional {
   featured?: boolean;
   image: string;
 }
+
 
 const professionals: Professional[] = [
   {
@@ -99,18 +105,22 @@ const professionals: Professional[] = [
   },
 ];
 
+
 function currencyBRL(v: number) {
   return `R$ ${v.toFixed(0)}/hora`;
 }
+
 
 function milesStr(v: number) {
   return `${v.toFixed(1).replace(".", ",")} miles de distância`;
 }
 
+
 function initials(name: string) {
   const [first = "", last = ""] = name.split(" ");
   return `${first.charAt(0)}${last.charAt(0)}`.toUpperCase();
 }
+
 
 function FeaturedCard({ pro }: { pro: Professional }) {
   return (
@@ -157,6 +167,7 @@ function FeaturedCard({ pro }: { pro: Professional }) {
   );
 }
 
+
 function ListCard({ pro }: { pro: Professional }) {
   return (
     <Paper elevation={1} sx={{ p: 2, borderRadius: 3 }}>
@@ -201,14 +212,11 @@ function ListCard({ pro }: { pro: Professional }) {
   );
 }
 
+
 export default function SearchProfessionalsPage() {
   const featured = professionals.find((p) => p.featured);
   const rest = professionals.filter((p) => !p.featured);
-  const [showList, setShowList] = React.useState(false);
 
-  const handleSearchClick = () => {
-    setShowList(true);
-  };
 
   return (
     <Container
@@ -230,37 +238,41 @@ export default function SearchProfessionalsPage() {
         <span className="text-[20px] font-bold text-[#484747] font-inter">Olá, Lucas</span>
       </div>
 
+
       {/* Busca */}
-      <div className="flex justify-start px-4">
-        <div className="flex items-center w-[70%] bg-white rounded-full px-4 py-2 shadow">
-          <input
-            type="text"
-            placeholder="Pintor"
-            className="flex-grow bg-transparent outline-none text-sm font-inter"
-          />
-          <button
-            type="button"
-            onClick={handleSearchClick}
-            className="text-gray-500 bg-transparent border-none"
-          >
-            <SearchRoundedIcon fontSize="small" />
-          </button>
-        </div>
-      </div>
+      <TextField
+        placeholder="Pintor"
+        fullWidth
+        variant="outlined"
+        InputProps={{
+          endAdornment: (
+            <InputAdornment position="end">
+              <SearchRoundedIcon />
+            </InputAdornment>
+          ),
+        }}
+        sx={{
+          bgcolor: "#FFFFFF",
+          borderRadius: 3,
+          "& fieldset": { borderColor: "#E0E0E0" },
+        }}
+      />
+
 
       {/* Destaque */}
       {featured && <FeaturedCard pro={featured} />}
 
+
       {/* Lista */}
-      {showList && (
-        <Stack spacing={1.5} sx={{ mt: 0.5 }}>
-          {rest.map((pro) => (
-            <ListCard key={pro.id} pro={pro} />
-          ))}
-        </Stack>
-      )}
+      <Stack spacing={1.5} sx={{ mt: 0.5 }}>
+        {rest.map((pro) => (
+          <ListCard key={pro.id} pro={pro} />)
+        )}
+      </Stack>
+
 
       <Box sx={{ flexGrow: 1 }} />
+
 
       {/* Bottom Navigation */}
       <Paper elevation={3} sx={{ position: "sticky", bottom: 0, left: 0, right: 0, borderRadius: 3 }}>
@@ -274,3 +286,6 @@ export default function SearchProfessionalsPage() {
     </Container>
   );
 }
+
+
+
