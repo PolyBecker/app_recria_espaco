@@ -122,7 +122,10 @@ function initials(name: string) {
 
 function FeaturedCard({ pro }: { pro: Professional }) {
   return (
-    <Paper elevation={2} sx={{ p: 2.5, borderRadius: 3 }}>
+    <Paper
+      elevation={0}
+      sx={{ p: 2.5, borderRadius: 3, boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)" }}
+    >
       <Stack direction="row" spacing={2} alignItems="center">
         <Avatar
           alt={pro.name}
@@ -151,7 +154,7 @@ function FeaturedCard({ pro }: { pro: Professional }) {
           href={`/hire?pro=${pro.id}`}
           sx={{
             backgroundColor: "#F88208",
-            borderRadius: 999,
+            borderRadius: 2,
             px: 2.5,
             minWidth: 120,
             "&:hover": { backgroundColor: "#FFA13F" },
@@ -168,7 +171,10 @@ function FeaturedCard({ pro }: { pro: Professional }) {
 
 function ListCard({ pro }: { pro: Professional }) {
   return (
-    <Paper elevation={1} sx={{ p: 2, borderRadius: 3 }}>
+    <Paper
+      elevation={0}
+      sx={{ p: 2, borderRadius: 3, boxShadow: "0 1px 2px rgba(0, 0, 0, 0.08)" }}
+    >
       <Stack direction="row" spacing={2} alignItems="center">
         <Avatar
           alt={pro.name}
@@ -240,7 +246,7 @@ export default function SearchProfessionalsPage() {
 
       {/* Busca */}
       <div className="flex justify-start px-4">
-        <div className="flex items-center w-full bg-white rounded-full px-4 py-2 shadow">
+        <div className="flex items-center w-full bg-white rounded-lg px-4 py-2 shadow">
           <input
             type="text"
             placeholder="Pintor"
