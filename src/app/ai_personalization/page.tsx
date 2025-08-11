@@ -4,7 +4,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ChevronRight } from '@mui/icons-material';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
-import DownloadIcon from '@mui/icons-material/Download';
 import FooterIcons from '@/app/components/footer_icons';
 import { useState } from 'react';
 
@@ -79,9 +78,9 @@ export default function AiPersonalizationPage() {
               />
             </div>
             <div className="mt-2">
-              <Link href="#">
-                <DownloadIcon className="text-[#484747]" />
-              </Link>
+              <button className="bg-[#F88208] hover:bg-[#FFA13F] active:bg-[#FFA13F] text-white font-semibold py-2 px-4 rounded-lg shadow-md text-sm">
+                salvar imagem
+              </button>
             </div>
           </div>
         </div>
