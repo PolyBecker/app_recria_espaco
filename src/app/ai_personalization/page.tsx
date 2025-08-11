@@ -78,7 +78,7 @@ export default function AiPersonalizationPage() {
               />
             </div>
             <div className="mt-2">
-              <button className="bg-[#F88208] hover:bg-[#FFA13F] active:bg-[#FFA13F] text-white font-semibold py-2 px-4 rounded-lg shadow-md text-sm">
+              <button className="bg-[#F88208] hover:bg-[#FFA13F] active:bg-[#FFA13F] text-white font-semibold py-2 px-4 rounded-lg shadow-md text-sm mb-5">
                 salvar imagem
               </button>
             </div>
