@@ -1,165 +1,218 @@
-'use client';
+// pauli/meu-primeiro-projeto/src/app/search_professionals/page.tsx
 
-import Image from 'next/image';
-import { Search } from '@mui/icons-material';
-import { Button, Rating } from '@mui/material';
-import React, { useRef, useState } from 'react';
-import FooterIcons from '../components/footer_icons';
+import * as React from "react";
+import Link from "next/link";
+import {
+  Avatar,
+  Box,
+  Button,
+  Chip,
+  Container,
+  Divider,
+  InputAdornment,
+  Paper,
+  Rating,
+  Stack,
+  TextField,
+  Typography,
+  BottomNavigation,
+  BottomNavigationAction,
+} from "@mui/material";
+import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
+import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
+import BuildRoundedIcon from "@mui/icons-material/BuildRounded";
+import PersonRoundedIcon from "@mui/icons-material/PersonRounded";
+import StarRoundedIcon from "@mui/icons-material/StarRounded";
 
 export const metadata = {
-  title: 'Buscar profissionais | Recria Espaço',
+  title: "Buscar profissionais | Recria Espaço",
   description:
-    'Lista e busca de profissionais por proximidade com avaliações e preço/hora.',
+    "Lista e busca de profissionais por proximidade com avaliações e preço/hora.",
   robots: { index: false },
 };
 
+// --- Tipos e dados mockados para layout ---
+interface Professional {
+  id: string;
+  name: string;
+  role: string;
+  ratePerHour: number; // em reais
+  distanceMiles: number;
+  rating: number; // 0..5
+  featured?: boolean;
+}
+
+const professionals: Professional[] = [
+  {
+    id: "luis-almeida",
+    name: "Luís Almeida",
+    role: "Pintor",
+    ratePerHour: 48,
+    distanceMiles: 1.2,
+    rating: 4.8,
+    featured: true,
+  },
+  { id: "daniel-moreno", name: "Daniel Moreno", role: "Pintor", ratePerHour: 40, distanceMiles: 3.2, rating: 4.7 },
+  { id: "sarah-wilson", name: "Sarah Wilson", role: "Pintor", ratePerHour: 50, distanceMiles: 4.9, rating: 4.8 },
+  { id: "amanda-costa", name: "Amanda Costa", role: "Pintor", ratePerHour: 35, distanceMiles: 2.3, rating: 4.8 },
+  { id: "eduardo-lima", name: "Eduardo Lima", role: "Pintor", ratePerHour: 60, distanceMiles: 7.1, rating: 4.7 },
+  { id: "beatriz-martins", name: "Beatriz Martins", role: "Pintor", ratePerHour: 65, distanceMiles: 4.5, rating: 4.6 },
+];
+
+function currencyBRL(v: number) {
+  return `R$ ${v.toFixed(0)}/hora`;
+}
+
+function milesStr(v: number) {
+  return `${v.toFixed(1).replace(".", ",")} miles de distância`;
+}
+
+function initials(name: string) {
+  const [first = "", last = ""] = name.split(" ");
+  return `${first.charAt(0)}${last.charAt(0)}`.toUpperCase();
+}
+
+function FeaturedCard({ pro }: { pro: Professional }) {
+  return (
+    <Paper elevation={2} sx={{ p: 2.5, borderRadius: 3 }}>
+      <Stack direction="row" spacing={2} alignItems="center">
+        <Avatar sx={{ width: 56, height: 56 }}>{initials(pro.name)}</Avatar>
+        <Box sx={{ flexGrow: 1 }}>
+          <Typography fontWeight={700}>{pro.name}</Typography>
+          <Stack direction="row" spacing={1} alignItems="center" sx={{ mt: 0.5 }}>
+            <Chip
+              icon={<StarRoundedIcon />}
+              label={pro.rating.toFixed(1)}
+              size="small"
+              sx={{ bgcolor: "#E8F5E9", color: "#1B5E20", borderRadius: 1 }}
+            />
+            <Typography variant="body2" color="text.secondary">
+              {pro.role}
+            </Typography>
+          </Stack>
+        </Box>
+        <Button
+          variant="contained"
+          component={Link}
+          href={`/hire?pro=${pro.id}`}
+          sx={{
+            backgroundColor: "#F88208",
+            borderRadius: 999,
+            px: 2.5,
+            minWidth: 120,
+            "&:hover": { backgroundColor: "#FFA13F" },
+            "&:active": { backgroundColor: "#FFA13F" },
+          }}
+        >
+          Contratar
+        </Button>
+      </Stack>
+    </Paper>
+  );
+}
+
+function ListCard({ pro }: { pro: Professional }) {
+  return (
+    <Paper elevation={1} sx={{ p: 2, borderRadius: 3 }}>
+      <Stack direction="row" spacing={2} alignItems="center">
+        <Avatar sx={{ width: 48, height: 48 }}>{initials(pro.name)}</Avatar>
+        <Box sx={{ flexGrow: 1, minWidth: 0 }}>
+          <Typography fontWeight={700} noWrap>
+            {pro.name}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            {currencyBRL(pro.ratePerHour)}
+          </Typography>
+          <Typography variant="caption" color="text.secondary">
+            {milesStr(pro.distanceMiles)}
+          </Typography>
+        </Box>
+        <Stack spacing={0.5} alignItems="flex-end">
+          <Rating
+            value={pro.rating}
+            precision={0.1}
+            readOnly
+            icon={<StarRoundedIcon fontSize="inherit" />}
+            emptyIcon={<StarRoundedIcon fontSize="inherit" />}
+            sx={{
+              fontSize: 18,
+              "& .MuiRating-iconFilled": { color: "#FFA13F" },
+              "& .MuiRating-iconEmpty": { opacity: 0.3 },
+            }}
+          />
+          <Typography variant="caption" color="text.secondary">
+            {pro.rating.toFixed(1)}
+          </Typography>
+        </Stack>
+      </Stack>
+    </Paper>
+  );
+}
+
 export default function SearchProfessionalsPage() {
-  const [search, setSearch] = useState('');
-  const [area] = useState('Pintores');
-
-  const [dragging, setDragging] = useState(false);
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const pointerDown = useRef(false);
-  const startY = useRef(0);
-  const startScroll = useRef(0);
-
-  const professionals = Array.from({ length: 13 }).map((_, i) => ({
-    id: i + 1,
-    name: `Profissional ${i + 1}`,
-    photo: `/list_workers/worker${i + 1}.jpg`,
-    description: 'Especialista em pintura residencial e comercial.',
-    hourlyRate: 'R$50.00/hora',
-  }));
-
-  const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
-    const container = scrollRef.current;
-    if (!container) return;
-    pointerDown.current = true;
-    startY.current = e.clientY;
-    startScroll.current = container.scrollTop;
-    setDragging(true);
-    container.setPointerCapture(e.pointerId);
-  };
-
-  const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
-    if (!pointerDown.current) return;
-    const container = scrollRef.current;
-    if (!container) return;
-    const walk = e.clientY - startY.current;
-    container.scrollTop = startScroll.current - walk;
-  };
-
-  const endDrag = (e: React.PointerEvent<HTMLDivElement>) => {
-    pointerDown.current = false;
-    const container = scrollRef.current;
-    if (container) {
-      container.releasePointerCapture(e.pointerId);
-    }
-    setDragging(false);
-  };
+  const featured = professionals.find((p) => p.featured);
+  const rest = professionals.filter((p) => !p.featured);
 
   return (
-    <div className="min-h-screen bg-[#FDFDFB] px-4 py-6 flex flex-col space-y-0 mt-0 mx-0 pb-0">
-      <div className="sticky top-0 bg-[#FDFDFB] space-y-6 pb-4 z-20">
-        <div className="flex justify-start px-4">
-          <div className="flex items-center w-[70%] bg-white rounded-full px-4 py-2 shadow">
-            <input
-              type="text"
-              placeholder="Busco por..."
-              value={search}
-              onChange={e => setSearch(e.target.value)}
-              className="flex-grow bg-transparent outline-none text-sm font-inter"
-            />
-            <Search className="text-gray-500" fontSize="small" />
-          </div>
-        </div>
+    <Container
+      maxWidth="sm"
+      sx={{
+        minHeight: "100dvh",
+        display: "flex",
+        flexDirection: "column",
+        gap: 2,
+        bgcolor: "#FDFDFB",
+        py: 2,
+      }}
+    >
+      {/* Cabeçalho */}
+      <Stack direction="row" spacing={1.5} alignItems="center" sx={{ px: 0.5, pt: 1 }}>
+        <Avatar sx={{ width: 32, height: 32 }}>L</Avatar>
+        <Typography variant="h5" fontWeight={800}>
+          Olá, Lucas
+        </Typography>
+      </Stack>
 
-        <h1 className="mt-[16px] text-[15px] font-medium text-[#484747] font-inter">{area}</h1>
+      {/* Busca */}
+      <TextField
+        placeholder="Pintor"
+        fullWidth
+        variant="outlined"
+        InputProps={{
+          endAdornment: (
+            <InputAdornment position="end">
+              <SearchRoundedIcon />
+            </InputAdornment>
+          ),
+        }}
+        sx={{
+          bgcolor: "#FFFFFF",
+          borderRadius: 3,
+          "& fieldset": { borderColor: "#E0E0E0" },
+        }}
+      />
 
-        <div className="bg-white shadow rounded-xl p-4 flex items-center space-x-4">
-          <div className="w-16 h-16 rounded-full overflow-hidden">
-            <Image
-              src="/list_workers/worker13.jpg"
-              alt="Destaque"
-              width={64}
-              height={64}
-              className="object-cover"
-            />
-          </div>
+      {/* Destaque */}
+      {featured && <FeaturedCard pro={featured} />}
 
-          <div className="flex-1 flex flex-col">
-            <h2 className="text-sm font-semibold text-[#484747] font-inter">Carla Dias</h2>
-            <p className="text-xs text-gray-500 font-inter mb-1">
-              Especialista em pintura de interiores com 10 anos de experiência.
-            </p>
-            <div className="flex flex-col">
-              <Rating
-                name="highlight-rating"
-                value={4}
-                readOnly
-                size="small"
-                className="mb-2"
-              />
-              <Button
-                variant="contained"
-                sx={{
-                  backgroundColor: '#F88208',
-                  textTransform: 'none',
-                  fontWeight: 600,
-                  '&:hover': { backgroundColor: '#FFA13F' },
-                  '&:active': { backgroundColor: '#FFA13F' },
-                  width: '70%',
-                }}
-                className="mx-auto"
-              >
-                Ver perfil
-              </Button>
-            </div>
-          </div>
-        </div>
-      </div>
+      {/* Lista */}
+      <Stack spacing={1.5} sx={{ mt: 0.5 }}>
+        {rest.map((pro) => (
+          <ListCard key={pro.id} pro={pro} />)
+        )}
+      </Stack>
 
-      <div
-        ref={scrollRef}
-        className={`relative space-y-4 overflow-y-auto no-scrollbar flex-1 scroll-mask pb-24 ${
-          dragging ? 'cursor-grabbing' : 'cursor-grab'
-        }`}
-        onPointerDown={handlePointerDown}
-        onPointerMove={handlePointerMove}
-        onPointerUp={endDrag}
-        onPointerLeave={endDrag}
-      >
-        {professionals.map((pro, i) => (
-          <div key={i} className="flex items-center bg-white p-4 rounded-xl shadow">
-            <div className="w-14 h-14 rounded-full overflow-hidden mr-4">
-              <Image
-                src={pro.photo}
-                alt={pro.name}
-                width={56}
-                height={56}
-                className="object-cover"
-              />
-            </div>
-            <div className="flex-1">
-              <h3 className="text-sm font-semibold text-[#484747] font-inter">{pro.name}</h3>
-              <p className="text-xs text-gray-500 font-inter mb-1">{pro.description}</p>
-              <p className="text-xs text-gray-500 font-inter mb-1">{pro.hourlyRate}</p>
-              <p className="text-xs text-gray-500 font-inter mb-1">1.4km de distancia</p>
-              <div className="flex flex-col">
-                <Rating
-                  name={`rating-${pro.id}`}
-                  value={4}
-                  readOnly
-                  size="small"
-                  className="mb-1"
-                />
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
+      <Box sx={{ flexGrow: 1 }} />
 
-      <FooterIcons />
-    </div>
+      {/* Bottom Navigation */}
+      <Paper elevation={3} sx={{ position: "sticky", bottom: 0, left: 0, right: 0, borderRadius: 3 }}>
+        <BottomNavigation showLabels={false} value={1} sx={{ borderRadius: 3 }}>
+          <BottomNavigationAction icon={<HomeRoundedIcon />} />
+          <BottomNavigationAction icon={<SearchRoundedIcon />} />
+          <BottomNavigationAction icon={<BuildRoundedIcon />} />
+          <BottomNavigationAction icon={<PersonRoundedIcon />} />
+        </BottomNavigation>
+      </Paper>
+    </Container>
   );
 }
