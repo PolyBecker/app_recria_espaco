@@ -40,6 +40,7 @@ interface Professional {
   distanceMiles: number;
   rating: number; // 0..5
   featured?: boolean;
+  image: string;
 }
 
 const professionals: Professional[] = [
@@ -51,12 +52,53 @@ const professionals: Professional[] = [
     distanceMiles: 1.2,
     rating: 4.8,
     featured: true,
+    image: "/list_workers/worker1.jpg",
   },
-  { id: "daniel-moreno", name: "Daniel Moreno", role: "Pintor", ratePerHour: 40, distanceMiles: 3.2, rating: 4.7 },
-  { id: "sarah-wilson", name: "Sarah Wilson", role: "Pintor", ratePerHour: 50, distanceMiles: 4.9, rating: 4.8 },
-  { id: "amanda-costa", name: "Amanda Costa", role: "Pintor", ratePerHour: 35, distanceMiles: 2.3, rating: 4.8 },
-  { id: "eduardo-lima", name: "Eduardo Lima", role: "Pintor", ratePerHour: 60, distanceMiles: 7.1, rating: 4.7 },
-  { id: "beatriz-martins", name: "Beatriz Martins", role: "Pintor", ratePerHour: 65, distanceMiles: 4.5, rating: 4.6 },
+  {
+    id: "daniel-moreno",
+    name: "Daniel Moreno",
+    role: "Pintor",
+    ratePerHour: 40,
+    distanceMiles: 3.2,
+    rating: 4.7,
+    image: "/list_workers/worker2.jpg",
+  },
+  {
+    id: "sarah-wilson",
+    name: "Sarah Wilson",
+    role: "Pintor",
+    ratePerHour: 50,
+    distanceMiles: 4.9,
+    rating: 4.8,
+    image: "/list_workers/worker3.jpg",
+  },
+  {
+    id: "amanda-costa",
+    name: "Amanda Costa",
+    role: "Pintor",
+    ratePerHour: 35,
+    distanceMiles: 2.3,
+    rating: 4.8,
+    image: "/list_workers/worker4.jpg",
+  },
+  {
+    id: "eduardo-lima",
+    name: "Eduardo Lima",
+    role: "Pintor",
+    ratePerHour: 60,
+    distanceMiles: 7.1,
+    rating: 4.7,
+    image: "/list_workers/worker5.jpg",
+  },
+  {
+    id: "beatriz-martins",
+    name: "Beatriz Martins",
+    role: "Pintor",
+    ratePerHour: 65,
+    distanceMiles: 4.5,
+    rating: 4.6,
+    image: "/list_workers/worker6.jpg",
+  },
 ];
 
 function currencyBRL(v: number) {
@@ -76,7 +118,13 @@ function FeaturedCard({ pro }: { pro: Professional }) {
   return (
     <Paper elevation={2} sx={{ p: 2.5, borderRadius: 3 }}>
       <Stack direction="row" spacing={2} alignItems="center">
-        <Avatar sx={{ width: 56, height: 56 }}>{initials(pro.name)}</Avatar>
+        <Avatar
+          alt={pro.name}
+          src={pro.image}
+          sx={{ width: 56, height: 56 }}
+        >
+          {initials(pro.name)}
+        </Avatar>
         <Box sx={{ flexGrow: 1 }}>
           <Typography fontWeight={700}>{pro.name}</Typography>
           <Stack direction="row" spacing={1} alignItems="center" sx={{ mt: 0.5 }}>
@@ -115,7 +163,13 @@ function ListCard({ pro }: { pro: Professional }) {
   return (
     <Paper elevation={1} sx={{ p: 2, borderRadius: 3 }}>
       <Stack direction="row" spacing={2} alignItems="center">
-        <Avatar sx={{ width: 48, height: 48 }}>{initials(pro.name)}</Avatar>
+        <Avatar
+          alt={pro.name}
+          src={pro.image}
+          sx={{ width: 48, height: 48 }}
+        >
+          {initials(pro.name)}
+        </Avatar>
         <Box sx={{ flexGrow: 1, minWidth: 0 }}>
           <Typography fontWeight={700} noWrap>
             {pro.name}
