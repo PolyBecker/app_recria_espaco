@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { Button, Rating } from '@mui/material';
 import React, { useRef, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
-import FooterIcons from '../../components/footer_icons';
+import FooterIcons from '../../components/footer_icons/page';
 
 
 export default function ProfessionalsListPage() {

@@ -6,7 +6,7 @@ import StarIcon from '@mui/icons-material/Star';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
-import FooterIcons from '../components/footer_icons';
+import FooterIcons from '../components/footer_icons/page';
 
 export default function ScheduleServicePage() {
   const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());

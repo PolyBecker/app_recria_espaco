@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ChevronRight } from '@mui/icons-material';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
-import FooterIcons from '@/app/components/footer_icons';
+import FooterIcons from '@/app/components/footer_icons/page';
 import { useState } from 'react';
 
 export default function AiPersonalizationPage() {

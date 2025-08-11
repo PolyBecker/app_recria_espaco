@@ -20,7 +20,7 @@ import {
   Pool,
   Handyman,
 } from '@mui/icons-material';
-import FooterIcons from '../components/footer_icons';
+import FooterIcons from '../components/footer_icons/page';
 
 export default function ProfessionalsPage() {
   const [search, setSearch] = useState('');
