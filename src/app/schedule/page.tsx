@@ -259,15 +259,17 @@ export default function ScheduleServicePage() {
                       value={notes}
                       onChange={(e) => setNotes(e.target.value)}
                     />
+                  </div>
+                  <div className="mt-2 flex items-center justify-between">
+                    <a href="" className="text-gray-500">
+                      <CloudUploadIcon />
+                    </a>
                     <button
-                      className="mt-2 w-full bg-[#F88208] text-white font-medium py-2 rounded-lg hover:bg-[#FFA13F] active:bg-[#FFA13F]"
+                      className="bg-[#F88208] text-white font-medium py-2 px-6 rounded-lg hover:bg-[#FFA13F] active:bg-[#FFA13F]"
                     >
                       Contratar
                     </button>
                   </div>
-                  <a href="" className="mt-2 inline-block text-gray-500">
-                    <CloudUploadIcon />
-                  </a>
                 </>
               )}
             </>
