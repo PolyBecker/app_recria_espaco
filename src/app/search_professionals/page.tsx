@@ -277,8 +277,8 @@ export default function SearchProfessionalsPage() {
         }}
         sx={{
           bgcolor: "#FFFFFF",
-          borderRadius: 3,
-          "& fieldset": { borderColor: "#E0E0E0" },
+          borderRadius: 10,
+          "& fieldset": { borderColor: "#E0E0E0", borderRadius: 10 },
         }}
       />
 
