@@ -187,9 +187,11 @@ export default function ProfessionalsPage() {
             <Image src="/place_after.png" alt="Sofá 2" width={500} height={120} className="object-cover w-full h-auto" />
           </div>
         </div>
-        <button className="w-full mt-4 py-3 rounded-lg text-white font-semibold bg-[#F88208] shadow-md transition-colors duration-200 hover:bg-[#FFA13F] active:bg-[#FFA13F]">
-          Personalize com IA
-        </button>
+        <Link href="/ai_personalization">
+          <button className="w-full mt-4 py-3 rounded-lg text-white font-semibold bg-[#F88208] shadow-md transition-colors duration-200 hover:bg-[#FFA13F] active:bg-[#FFA13F]">
+            Solicitar
+          </button>
+        </Link>
       </div>
 
       {/* Seção 5: Novidades */}
