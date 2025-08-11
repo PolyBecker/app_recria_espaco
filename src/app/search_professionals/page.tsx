@@ -2,13 +2,13 @@
 
 import * as React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import {
   Avatar,
   Box,
   Button,
   Chip,
   Container,
-  Divider,
   InputAdornment,
   Paper,
   Rating,
@@ -166,12 +166,12 @@ export default function SearchProfessionalsPage() {
       }}
     >
       {/* Cabeçalho */}
-      <Stack direction="row" spacing={1.5} alignItems="center" sx={{ px: 0.5, pt: 1 }}>
-        <Avatar sx={{ width: 32, height: 32 }}>L</Avatar>
-        <Typography variant="h5" fontWeight={800}>
-          Olá, Lucas
-        </Typography>
-      </Stack>
+      <div className="flex items-center space-x-4 px-4">
+        <div className="w-[34px] h-[34px] rounded-full overflow-hidden">
+          <Image src="/current_user.avif" alt="User" width={34} height={34} />
+        </div>
+        <span className="text-[20px] font-bold text-[#484747] font-inter">Olá, Lucas</span>
+      </div>
 
       {/* Busca */}
       <TextField
