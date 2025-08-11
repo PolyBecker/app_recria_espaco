@@ -1,6 +1,6 @@
 'use client';
 import Link from 'next/link';
-import { Home, PhotoFilter, SearchOutlined, ContentCut, Person } from '@mui/icons-material';
+import { Home, PhotoFilter, SearchOutlined, Build, Person } from '@mui/icons-material';
 
 export default function FooterIcons() {
   return (
@@ -15,7 +15,7 @@ export default function FooterIcons() {
         <SearchOutlined className="text-gray-600" />
       </Link>
       <Link href="">
-        <ContentCut className="text-gray-600" />
+        <Build className="text-gray-600" />
       </Link>
       <Link href="">
         <Person className="text-gray-600" />
