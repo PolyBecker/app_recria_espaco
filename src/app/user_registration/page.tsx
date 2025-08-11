@@ -10,6 +10,7 @@ import {
   Button,
 } from '@mui/material';
 import { Controller, useForm } from 'react-hook-form';
+import { useRouter } from 'next/navigation';  // Import do useRouter
 
 type FormValues = {
   fullName: string;
@@ -26,6 +27,8 @@ const FIELD_BORDER = '#FFEDCF';
 const BACKGROUND_COLOR = '#FDFDFB';
 
 export default function UserRegistrationPage() {
+  const router = useRouter();  // Instancia router
+
   const {
     handleSubmit,
     control,
@@ -47,6 +50,9 @@ export default function UserRegistrationPage() {
     // TODO: integrar com backend / Firebase
     console.log('Form data:', data);
     reset();
+
+    // Navega para /professionals após submissão
+    router.push('/professionals');
   };
 
   return (
@@ -64,150 +70,150 @@ export default function UserRegistrationPage() {
 
       <Box component="form" noValidate onSubmit={handleSubmit(onSubmit)}>
         <Stack spacing={2.5}>
-              <LabeledField label="Nome Completo *">
-                <Controller
-                  name="fullName"
-                  control={control}
-                  rules={{ required: 'Informe seu nome completo' }}
-                  render={({ field }) => (
-                    <StyledTextField
-                      {...field}
-                      placeholder="Seu nome"
-                      error={!!errors.fullName}
-                      helperText={errors.fullName?.message}
-                    />
-                  )}
+          <LabeledField label="Nome Completo *">
+            <Controller
+              name="fullName"
+              control={control}
+              rules={{ required: 'Informe seu nome completo' }}
+              render={({ field }) => (
+                <StyledTextField
+                  {...field}
+                  placeholder="Seu nome"
+                  error={!!errors.fullName}
+                  helperText={errors.fullName?.message}
                 />
-              </LabeledField>
+              )}
+            />
+          </LabeledField>
 
-              <LabeledField label="Endereço *">
-                <Controller
-                  name="address"
-                  control={control}
-                  rules={{ required: 'Informe seu endereço' }}
-                  render={({ field }) => (
-                    <StyledTextField
-                      {...field}
-                      placeholder="Seu endereço"
-                      error={!!errors.address}
-                      helperText={errors.address?.message}
-                    />
-                  )}
+          <LabeledField label="Endereço *">
+            <Controller
+              name="address"
+              control={control}
+              rules={{ required: 'Informe seu endereço' }}
+              render={({ field }) => (
+                <StyledTextField
+                  {...field}
+                  placeholder="Seu endereço"
+                  error={!!errors.address}
+                  helperText={errors.address?.message}
                 />
-              </LabeledField>
+              )}
+            />
+          </LabeledField>
 
-              <LabeledField label="Número *">
-                <Controller
-                  name="number"
-                  control={control}
-                  rules={{
-                    required: 'Informe o número',
-                    pattern: { value: /^\d+$/, message: 'Use apenas dígitos' },
-                  }}
-                  render={({ field }) => (
-                    <StyledTextField
-                      {...field}
-                      placeholder="Número do seu endereço"
-                      error={!!errors.number}
-                      helperText={errors.number?.message}
-                      inputMode="numeric"
-                    />
-                  )}
+          <LabeledField label="Número *">
+            <Controller
+              name="number"
+              control={control}
+              rules={{
+                required: 'Informe o número',
+                pattern: { value: /^\d+$/, message: 'Use apenas dígitos' },
+              }}
+              render={({ field }) => (
+                <StyledTextField
+                  {...field}
+                  placeholder="Número do seu endereço"
+                  error={!!errors.number}
+                  helperText={errors.number?.message}
+                  inputMode="numeric"
                 />
-              </LabeledField>
+              )}
+            />
+          </LabeledField>
 
-              <LabeledField label="CEP *">
-                <Controller
-                  name="cep"
-                  control={control}
-                  rules={{
-                    required: 'Informe o CEP',
-                    pattern: {
-                      value: /^\d{5}-?\d{3}$/,
-                      message: 'Formato válido: 00000-000',
-                    },
-                  }}
-                  render={({ field }) => (
-                    <StyledTextField
-                      {...field}
-                      placeholder="Seu CEP"
-                      error={!!errors.cep}
-                      helperText={errors.cep?.message}
-                      inputMode="numeric"
-                    />
-                  )}
+          <LabeledField label="CEP *">
+            <Controller
+              name="cep"
+              control={control}
+              rules={{
+                required: 'Informe o CEP',
+                pattern: {
+                  value: /^\d{5}-?\d{3}$/,
+                  message: 'Formato válido: 00000-000',
+                },
+              }}
+              render={({ field }) => (
+                <StyledTextField
+                  {...field}
+                  placeholder="Seu CEP"
+                  error={!!errors.cep}
+                  helperText={errors.cep?.message}
+                  inputMode="numeric"
                 />
-              </LabeledField>
+              )}
+            />
+          </LabeledField>
 
-              <LabeledField label="Telefone *">
-                <Controller
-                  name="phone"
-                  control={control}
-                  rules={{
-                    required: 'Informe o telefone',
-                    pattern: {
-                      value: /^\+?\d[\d\s()-]{7,}$/,
-                      message: 'Informe um telefone válido',
-                    },
-                  }}
-                  render={({ field }) => (
-                    <StyledTextField
-                      {...field}
-                      placeholder="+55"
-                      error={!!errors.phone}
-                      helperText={errors.phone?.message}
-                      inputMode="tel"
-                    />
-                  )}
+          <LabeledField label="Telefone *">
+            <Controller
+              name="phone"
+              control={control}
+              rules={{
+                required: 'Informe o telefone',
+                pattern: {
+                  value: /^\+?\d[\d\s()-]{7,}$/,
+                  message: 'Informe um telefone válido',
+                },
+              }}
+              render={({ field }) => (
+                <StyledTextField
+                  {...field}
+                  placeholder="+55"
+                  error={!!errors.phone}
+                  helperText={errors.phone?.message}
+                  inputMode="tel"
                 />
-              </LabeledField>
+              )}
+            />
+          </LabeledField>
 
-              <LabeledField label="CPF *">
-                <Controller
-                  name="cpf"
-                  control={control}
-                  rules={{
-                    required: 'Informe o CPF',
-                    pattern: {
-                      value: /^\d{3}\.?\d{3}\.?\d{3}-?\d{2}$/,
-                      message: 'Formato válido: 000.000.000-00',
-                    },
-                  }}
-                  render={({ field }) => (
-                    <StyledTextField
-                      {...field}
-                      placeholder="Seu CPF"
-                      error={!!errors.cpf}
-                      helperText={errors.cpf?.message}
-                      inputMode="numeric"
-                    />
-                  )}
+          <LabeledField label="CPF *">
+            <Controller
+              name="cpf"
+              control={control}
+              rules={{
+                required: 'Informe o CPF',
+                pattern: {
+                  value: /^\d{3}\.?\d{3}\.?\d{3}-?\d{2}$/,
+                  message: 'Formato válido: 000.000.000-00',
+                },
+              }}
+              render={({ field }) => (
+                <StyledTextField
+                  {...field}
+                  placeholder="Seu CPF"
+                  error={!!errors.cpf}
+                  helperText={errors.cpf?.message}
+                  inputMode="numeric"
                 />
-              </LabeledField>
+              )}
+            />
+          </LabeledField>
 
-              <Button
-                type="submit"
-                variant="contained"
-                disabled={isSubmitting}
-                sx={{
-                  alignSelf: 'flex-start',
-                  mt: 1,
-                  px: 4,
-                  py: 1.2,
-                  borderRadius: '12px',
-                  textTransform: 'none',
-                  fontWeight: 700,
-                  bgcolor: ORANGE_MAIN,
-                  '&:hover': { bgcolor: ORANGE_HOVER },
-                  '&:active': { bgcolor: ORANGE_HOVER },
-                  boxShadow:
-                    '0px 6px 14px rgba(248,130,8,0.28), 0px 2px 4px rgba(0,0,0,0.06)',
-                }}
-              >
-                Enviar
-              </Button>
-            </Stack>
-          </Box>
+          <Button
+            type="submit"
+            variant="contained"
+            disabled={isSubmitting}
+            sx={{
+              alignSelf: 'flex-start',
+              mt: 1,
+              px: 4,
+              py: 1.2,
+              borderRadius: '12px',
+              textTransform: 'none',
+              fontWeight: 700,
+              bgcolor: ORANGE_MAIN,
+              '&:hover': { bgcolor: ORANGE_HOVER },
+              '&:active': { bgcolor: ORANGE_HOVER },
+              boxShadow:
+                '0px 6px 14px rgba(248,130,8,0.28), 0px 2px 4px rgba(0,0,0,0.06)',
+            }}
+          >
+            Enviar
+          </Button>
+        </Stack>
+      </Box>
     </Container>
   );
 }

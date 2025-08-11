@@ -51,23 +51,24 @@ export default function LoginPage() {
             {showPassword ? <Visibility fontSize="small" /> : <VisibilityOff fontSize="small" />}
           </button>
         </div>
-
         {/* Botão de login */}
-        <button type="submit" className="w-full py-3 rounded-lg text-white font-semibold bg-orange-500 shadow-md transition-colors duration-200 hover:bg-[#FFA13F] active:bg-[#FFA13F]">
-          Log in
-        </button>
-
+        <button
+  type="button"
+  onClick={() => (window.location.href = "/professionals")}
+  className="w-full py-3 rounded-lg text-white font-semibold bg-orange-500 shadow-md transition-colors duration-200 hover:bg-[#FFA13F] active:bg-[#FFA13F]"
+>
+  Log in
+</button>
         <a href="#" className="text-center text-sm text-gray-600 underline">
           Esqueci minha senha
         </a>
       </form>
-
       <a
-        href="#"
-        className="w-full max-w-xs text-center mt-4 text-base text-gray-600 underline"
-      >
-        Cadastre-se
-      </a>
+  href="/registration"
+  className="w-full max-w-xs text-center mt-4 text-base text-gray-600 underline"
+>
+  Cadastre-se
+</a>
 
       {/* Social login */}
       <div className="flex flex-col items-center gap-4 mt-10">

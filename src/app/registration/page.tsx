@@ -26,7 +26,7 @@ export default function RegistrationPage() {
         <div className="w-full flex flex-col gap-5">
           <Button
             component={Link}
-            href="#"
+            href="/user_registration"
             variant="contained"
             fullWidth
             sx={{
@@ -45,7 +45,7 @@ export default function RegistrationPage() {
 
           <Button
             component={Link}
-            href="#"
+            href="/worker_registration"
             variant="contained"
             fullWidth
             sx={{
