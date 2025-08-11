@@ -1,4 +1,5 @@
 // pauli/meu-primeiro-projeto/src/app/search_professionals/page.tsx
+'use client';
 
 import * as React from "react";
 import Link from "next/link";
@@ -8,11 +9,9 @@ import {
   Button,
   Chip,
   Container,
-  InputAdornment,
   Paper,
   Rating,
   Stack,
-  TextField,
   Typography,
   BottomNavigation,
   BottomNavigationAction,
@@ -22,6 +21,7 @@ import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
 import BuildRoundedIcon from "@mui/icons-material/BuildRounded";
 import PersonRoundedIcon from "@mui/icons-material/PersonRounded";
 import StarRoundedIcon from "@mui/icons-material/StarRounded";
+import Search from "@mui/icons-material/Search";
 
 export const metadata = {
   title: "Buscar profissionais | Recria Espaço",
@@ -151,6 +151,7 @@ function ListCard({ pro }: { pro: Professional }) {
 export default function SearchProfessionalsPage() {
   const featured = professionals.find((p) => p.featured);
   const rest = professionals.filter((p) => !p.featured);
+  const [search, setSearch] = React.useState('');
 
   return (
     <Container
@@ -184,23 +185,18 @@ export default function SearchProfessionalsPage() {
       </Stack>
 
       {/* Busca */}
-      <TextField
-        placeholder="Pintor"
-        fullWidth
-        variant="outlined"
-        InputProps={{
-          endAdornment: (
-            <InputAdornment position="end">
-              <SearchRoundedIcon />
-            </InputAdornment>
-          ),
-        }}
-        sx={{
-          bgcolor: "#FFFFFF",
-          borderRadius: 3,
-          "& fieldset": { borderColor: "#E0E0E0" },
-        }}
-      />
+      <div className="flex justify-start px-4">
+        <div className="flex items-center w-[70%] bg-white rounded-full px-4 py-2 shadow">
+          <input
+            type="text"
+            placeholder="Pintor"
+            value={search}
+            onChange={e => setSearch(e.target.value)}
+            className="flex-grow bg-transparent outline-none text-sm font-inter"
+          />
+          <Search className="text-gray-500" fontSize="small" />
+        </div>
+      </div>
 
       {/* Destaque */}
       {featured && <FeaturedCard pro={featured} />}
