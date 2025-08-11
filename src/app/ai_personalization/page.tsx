@@ -77,7 +77,7 @@ export default function AiPersonalizationPage() {
                 className="w-full object-cover"
               />
             </div>
-            <div className="mt-2">
+            <div className="mt-2 flex justify-end">
               <button className="bg-[#F88208] hover:bg-[#FFA13F] active:bg-[#FFA13F] text-white font-semibold py-2 px-4 rounded-lg shadow-md text-sm mb-5">
                 salvar imagem
               </button>
