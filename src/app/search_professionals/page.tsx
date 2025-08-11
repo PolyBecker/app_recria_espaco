@@ -204,6 +204,11 @@ function ListCard({ pro }: { pro: Professional }) {
 export default function SearchProfessionalsPage() {
   const featured = professionals.find((p) => p.featured);
   const rest = professionals.filter((p) => !p.featured);
+  const [showList, setShowList] = React.useState(false);
+
+  const handleSearchClick = () => {
+    setShowList(true);
+  };
 
   return (
     <Container
@@ -233,7 +238,13 @@ export default function SearchProfessionalsPage() {
             placeholder="Pintor"
             className="flex-grow bg-transparent outline-none text-sm font-inter"
           />
-          <SearchRoundedIcon className="text-gray-500" fontSize="small" />
+          <button
+            type="button"
+            onClick={handleSearchClick}
+            className="text-gray-500 bg-transparent border-none"
+          >
+            <SearchRoundedIcon fontSize="small" />
+          </button>
         </div>
       </div>
 
@@ -241,11 +252,13 @@ export default function SearchProfessionalsPage() {
       {featured && <FeaturedCard pro={featured} />}
 
       {/* Lista */}
-      <Stack spacing={1.5} sx={{ mt: 0.5 }}>
-        {rest.map((pro) => (
-          <ListCard key={pro.id} pro={pro} />)
-        )}
-      </Stack>
+      {showList && (
+        <Stack spacing={1.5} sx={{ mt: 0.5 }}>
+          {rest.map((pro) => (
+            <ListCard key={pro.id} pro={pro} />
+          ))}
+        </Stack>
+      )}
 
       <Box sx={{ flexGrow: 1 }} />
 
