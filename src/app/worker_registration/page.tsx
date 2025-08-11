@@ -11,6 +11,7 @@ import {
   MenuItem,
 } from '@mui/material';
 import { Controller, useForm } from 'react-hook-form';
+import FooterIcons from '../components/footer_icons/page';
 
 type FormValues = {
   fullName: string;
@@ -69,20 +70,21 @@ export default function WorkerRegistrationPage() {
   };
 
   return (
-    <Container
-      component="main"
-      maxWidth="sm"
-      sx={{ py: { xs: 3, md: 6 }, bgcolor: BACKGROUND_COLOR, minHeight: '100vh' }}
-    >
-      <Typography
-        variant="subtitle1"
-        sx={{ fontWeight: 600, color: '#484747', mb: 2 }}
+    <>
+      <Container
+        component="main"
+        maxWidth="sm"
+        sx={{ py: { xs: 3, md: 6 }, bgcolor: BACKGROUND_COLOR, minHeight: '100vh' }}
       >
-        Cadastro de Trabalhador
-      </Typography>
+        <Typography
+          variant="subtitle1"
+          sx={{ fontWeight: 600, color: '#484747', mb: 2 }}
+        >
+          Cadastro de Trabalhador
+        </Typography>
 
-      <Box component="form" noValidate onSubmit={handleSubmit(onSubmit)}>
-        <Stack spacing={2.5}>
+        <Box component="form" noValidate onSubmit={handleSubmit(onSubmit)}>
+          <Stack spacing={2.5}>
           <LabeledField label="Nome Completo *">
             <Controller
               name="fullName"
@@ -250,7 +252,9 @@ export default function WorkerRegistrationPage() {
           </Button>
         </Stack>
       </Box>
-    </Container>
+      </Container>
+      <FooterIcons />
+    </>
   );
 }
 
