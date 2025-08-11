@@ -11,6 +11,7 @@ import {
 } from '@mui/material';
 import { Controller, useForm } from 'react-hook-form';
 import { useRouter } from 'next/navigation';  // Import do useRouter
+import FooterIcons from '../components/footer_icons/page';
 
 type FormValues = {
   fullName: string;
@@ -56,11 +57,12 @@ export default function UserRegistrationPage() {
   };
 
   return (
-    <Container
-      component="main"
-      maxWidth="sm"
-      sx={{ py: { xs: 3, md: 6 }, bgcolor: BACKGROUND_COLOR, minHeight: '100vh' }}
-    >
+    <>
+      <Container
+        component="main"
+        maxWidth="sm"
+        sx={{ py: { xs: 3, md: 6 }, bgcolor: BACKGROUND_COLOR, minHeight: '100vh' }}
+      >
       <Typography
         variant="subtitle1"
         sx={{ fontWeight: 600, color: '#484747', mb: 2 }}
@@ -214,7 +216,9 @@ export default function UserRegistrationPage() {
           </Button>
         </Stack>
       </Box>
-    </Container>
+      </Container>
+      <FooterIcons />
+    </>
   );
 }
 
