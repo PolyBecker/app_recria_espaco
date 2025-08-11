@@ -4,17 +4,15 @@
 import * as React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import {
+import { 
   Avatar,
   Box,
   Button,
   Chip,
   Container,
-  InputAdornment,
   Paper,
   Rating,
   Stack,
-  TextField,
   Typography,
   BottomNavigation,
   BottomNavigationAction,
@@ -214,6 +212,7 @@ function ListCard({ pro }: { pro: Professional }) {
 
 
 export default function SearchProfessionalsPage() {
+  const [search, setSearch] = React.useState("");
   const featured = professionals.find((p) => p.featured);
   const rest = professionals.filter((p) => !p.featured);
 
@@ -240,23 +239,18 @@ export default function SearchProfessionalsPage() {
 
 
       {/* Busca */}
-      <TextField
-        placeholder="Pintor"
-        fullWidth
-        variant="outlined"
-        InputProps={{
-          endAdornment: (
-            <InputAdornment position="end">
-              <SearchRoundedIcon />
-            </InputAdornment>
-          ),
-        }}
-        sx={{
-          bgcolor: "#FFFFFF",
-          borderRadius: 3,
-          "& fieldset": { borderColor: "#E0E0E0" },
-        }}
-      />
+      <div className="flex justify-start px-4">
+        <div className="flex items-center w-full bg-white rounded-full px-4 py-2 shadow">
+          <input
+            type="text"
+            placeholder="Pintor"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className="flex-grow bg-transparent outline-none text-sm font-inter"
+          />
+          <SearchRoundedIcon className="text-gray-500" fontSize="small" />
+        </div>
+      </div>
 
 
       {/* Destaque */}
