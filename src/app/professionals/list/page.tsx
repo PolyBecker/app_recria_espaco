@@ -10,7 +10,10 @@ import FooterIcons from '../../components/footer_icons/page';
 
 export default function ProfessionalsListPage() {
   const searchParams = useSearchParams();
-  const [area] = useState(searchParams.get('area') ?? 'Pintores');
+  const [area] = useState(() => {
+    const rawArea = searchParams.get('area') ?? 'Pintores';
+    return rawArea.charAt(0).toUpperCase() + rawArea.slice(1).toLowerCase();
+  });
 
 
   const [dragging, setDragging] = useState(false);
@@ -65,7 +68,7 @@ export default function ProfessionalsListPage() {
 
       {/* Título e card de destaque fixos */}
       <div className="sticky top-0 bg-[#FDFDFB] space-y-6 pb-4 z-20">
-        <h1 className="mt-[16px] text-[15px] font-medium text-[#484747] font-inter">{area}</h1>
+        <h1 className="mt-[16px] text-[15px] font-bold text-[#484747] font-inter">{area}</h1>
 
 
         <div className="bg-white shadow rounded-xl p-4 flex items-center space-x-4">
