@@ -78,7 +78,12 @@ export default function WorkerRegistrationPage() {
       <Container
         component="main"
         maxWidth="sm"
-        sx={{ py: { xs: 3, md: 6 }, bgcolor: BACKGROUND_COLOR, minHeight: '100vh' }}
+        sx={{
+          py: { xs: 3, md: 6 },
+          pb: 10,
+          bgcolor: BACKGROUND_COLOR,
+          minHeight: '100vh',
+        }}
       >
         <Typography
           variant="subtitle1"
@@ -239,8 +244,7 @@ export default function WorkerRegistrationPage() {
             disabled={isSubmitting}
             sx={{
               alignSelf: 'flex-start',
-              mt: '-10px',
-              mb: '100px',
+              mt: 1,
               px: 4,
               py: 1.2,
               borderRadius: '12px',
