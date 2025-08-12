@@ -18,14 +18,10 @@ import {
   Stack,
   TextField,
   Typography,
-  BottomNavigation,
-  BottomNavigationAction,
 } from "@mui/material";
-import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
 import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
-import BuildRoundedIcon from "@mui/icons-material/BuildRounded";
-import PersonRoundedIcon from "@mui/icons-material/PersonRounded";
 import StarRoundedIcon from "@mui/icons-material/StarRounded";
+import FooterIcons from "../components/footer_icons/page";
 
 
 
@@ -241,17 +237,18 @@ export default function SearchProfessionalsPage() {
 
 
   return (
-    <Container
-      maxWidth="sm"
-      sx={{
-        minHeight: "100dvh",
-        display: "flex",
-        flexDirection: "column",
-        gap: 2,
-        bgcolor: "#FDFDFB",
-        py: 2,
-      }}
-    >
+    <>
+      <Container
+        maxWidth="sm"
+        sx={{
+          minHeight: "100dvh",
+          display: "flex",
+          flexDirection: "column",
+          gap: 2,
+          bgcolor: "#FDFDFB",
+          py: 2,
+        }}
+      >
       {/* Cabeçalho */}
       <div className="flex items-center space-x-4 px-4">
         <div className="w-[34px] h-[34px] rounded-full overflow-hidden">
@@ -301,21 +298,10 @@ export default function SearchProfessionalsPage() {
 
 
 
-      <Box sx={{ flexGrow: 1 }} />
-
-
-
-
-      {/* Bottom Navigation */}
-      <Paper elevation={3} sx={{ position: "sticky", bottom: 0, left: 0, right: 0, borderRadius: 3 }}>
-        <BottomNavigation showLabels={false} value={1} sx={{ borderRadius: 3 }}>
-          <BottomNavigationAction icon={<HomeRoundedIcon />} />
-          <BottomNavigationAction icon={<SearchRoundedIcon />} />
-          <BottomNavigationAction icon={<BuildRoundedIcon />} />
-          <BottomNavigationAction icon={<PersonRoundedIcon />} />
-        </BottomNavigation>
-      </Paper>
-    </Container>
+        <Box sx={{ flexGrow: 1 }} />
+      </Container>
+      <FooterIcons />
+    </>
   );
 }
 
