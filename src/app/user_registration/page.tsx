@@ -245,14 +245,17 @@ function StyledTextField(props: React.ComponentProps<typeof TextField>) {
   return (
     <TextField
       fullWidth
-      size="medium"
       variant="outlined"
       InputLabelProps={{ shrink: false }}
       {...props}
       sx={{
         '& .MuiOutlinedInput-root': {
+          height: '39.2px',
           borderRadius: '12px',
           bgcolor: '#FFFFFF',
+          '& .MuiOutlinedInput-input': {
+            padding: '8px 14px',
+          },
           '& input::placeholder': { color: '#A4A4A4', opacity: 1 },
           '& fieldset': {
             borderColor: FIELD_BORDER,
