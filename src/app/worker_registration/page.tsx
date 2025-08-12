@@ -28,6 +28,7 @@ const ORANGE_MAIN = '#F88208';
 const ORANGE_HOVER = '#FFA13F';
 const FIELD_BORDER = '#FFEDCF';
 const BACKGROUND_COLOR = '#FDFDFB';
+const FOOTER_HEIGHT_PX = 72; // ajuste se necessário
 
 const PROFESSIONS = [
   'Cleaner',
@@ -80,9 +81,9 @@ export default function WorkerRegistrationPage() {
         maxWidth="sm"
         sx={{
           py: { xs: 3, md: 6 },
-          pb: 10,
+          pb: `calc(${FOOTER_HEIGHT_PX}px + env(safe-area-inset-bottom))`,
           bgcolor: BACKGROUND_COLOR,
-          minHeight: '100vh',
+          minHeight: '100dvh',
         }}
       >
         <Typography
@@ -262,6 +263,7 @@ export default function WorkerRegistrationPage() {
         </Stack>
       </Box>
       </Container>
+      <Box sx={{ height: FOOTER_HEIGHT_PX }} />
       <FooterIcons />
     </>
   );
