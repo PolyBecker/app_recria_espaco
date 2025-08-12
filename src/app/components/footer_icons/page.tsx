@@ -17,7 +17,7 @@ export default function FooterIcons() {
       <Link href="/worker_registration">
         <Build className="text-gray-600" />
       </Link>
-      <Link href="" onClick={(e) => e.preventDefault()}>
+      <Link href="/registration">
         <Person className="text-gray-600" />
       </Link>
     </div>
