@@ -239,7 +239,8 @@ export default function WorkerRegistrationPage() {
             disabled={isSubmitting}
             sx={{
               alignSelf: 'flex-start',
-              mt: 0,
+              mt: '-10px',
+              mb: '50px',
               px: 4,
               py: 1.2,
               borderRadius: '12px',
