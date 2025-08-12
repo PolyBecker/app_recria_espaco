@@ -235,7 +235,7 @@ export default function WorkerRegistrationPage() {
             disabled={isSubmitting}
             sx={{
               alignSelf: 'flex-start',
-              mt: 1,
+              mt: 0,
               px: 4,
               py: 1.2,
               borderRadius: '12px',
@@ -281,7 +281,7 @@ function StyledTextField(props: React.ComponentProps<typeof TextField>) {
   return (
     <TextField
       fullWidth
-      size="medium"
+      size="small"
       variant="outlined"
       InputLabelProps={{ shrink: false }}
       {...props}
@@ -289,6 +289,7 @@ function StyledTextField(props: React.ComponentProps<typeof TextField>) {
         '& .MuiOutlinedInput-root': {
           borderRadius: '12px',
           bgcolor: '#FFFFFF',
+          height: '39px',
           '& input::placeholder': { color: '#A4A4A4', opacity: 1 },
           '& fieldset': {
             borderColor: FIELD_BORDER,
@@ -300,6 +301,9 @@ function StyledTextField(props: React.ComponentProps<typeof TextField>) {
             borderColor: ORANGE_MAIN,
             borderWidth: '1.5px',
           },
+        },
+        '& .MuiInputBase-input': {
+          py: 0.5,
         },
         '& .MuiFormHelperText-root': {
           mt: 0.75,
