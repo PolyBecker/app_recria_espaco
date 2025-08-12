@@ -156,7 +156,9 @@ function FeaturedCard({ pro }: { pro: Professional }) {
           {initials(pro.name)}
         </Avatar>
         <Box sx={{ flexGrow: 1 }}>
-          <Typography fontWeight={700}>{pro.name}</Typography>
+          <Typography fontWeight={700} sx={{ color: "#484747" }}>
+            {pro.name}
+          </Typography>
           <Stack direction="row" spacing={1} alignItems="center" sx={{ mt: 0.5 }}>
             <Chip
               icon={<StarRoundedIcon />}
@@ -213,7 +215,7 @@ function ListCard({ pro }: { pro: Professional }) {
           {initials(pro.name)}
         </Avatar>
         <Box sx={{ flexGrow: 1, minWidth: 0 }}>
-          <Typography fontWeight={700} noWrap>
+          <Typography fontWeight={700} noWrap sx={{ color: "#484747" }}>
             {pro.name}
           </Typography>
           <Typography variant="body2" color="text.secondary">
