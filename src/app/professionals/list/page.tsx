@@ -2,6 +2,7 @@
 
 import React, { useRef, useState, Suspense } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { Button, Rating } from '@mui/material';
 import FooterIcons from '../../components/footer_icons/page';
@@ -85,6 +86,8 @@ function Inner() {
                 className="mb-2"
               />
               <Button
+                component={Link}
+                href="/schedule"
                 variant="contained"
                 sx={{
                   backgroundColor: '#F88208',
@@ -113,7 +116,11 @@ function Inner() {
         onPointerLeave={endDrag}
       >
         {professionals.map((pro, i) => (
-          <div key={i} className="flex items-center bg-white p-4 rounded-xl shadow">
+          <Link
+            href="/schedule"
+            key={i}
+            className="flex items-center bg-white p-4 rounded-xl shadow"
+          >
             <div className="w-14 h-14 rounded-full overflow-hidden mr-4">
               <Image
                 src={pro.photo}
@@ -138,7 +145,7 @@ function Inner() {
                 />
               </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
 
