@@ -136,7 +136,17 @@ function initials(name: string) {
 
 function FeaturedCard({ pro }: { pro: Professional }) {
   return (
-    <Paper elevation={2} sx={{ p: 2.5, borderRadius: 3 }}>
+    <Paper
+      elevation={2}
+      component={Link}
+      href="/schedule"
+      sx={{
+        p: 2.5,
+        borderRadius: 3,
+        textDecoration: "none",
+        color: "inherit",
+      }}
+    >
       <Stack direction="row" spacing={2} alignItems="center">
         <Avatar
           alt={pro.name}
@@ -161,8 +171,7 @@ function FeaturedCard({ pro }: { pro: Professional }) {
         </Box>
         <Button
           variant="contained"
-          component={Link}
-          href={`/hire?pro=${pro.id}`}
+          component="div"
           sx={{
             backgroundColor: "#F88208",
             borderRadius: 999,
@@ -184,7 +193,17 @@ function FeaturedCard({ pro }: { pro: Professional }) {
 
 function ListCard({ pro }: { pro: Professional }) {
   return (
-    <Paper elevation={1} sx={{ p: 2, borderRadius: 3 }}>
+    <Paper
+      elevation={1}
+      component={Link}
+      href="/schedule"
+      sx={{
+        p: 2,
+        borderRadius: 3,
+        textDecoration: "none",
+        color: "inherit",
+      }}
+    >
       <Stack direction="row" spacing={2} alignItems="center">
         <Avatar
           alt={pro.name}
