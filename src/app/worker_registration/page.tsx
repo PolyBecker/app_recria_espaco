@@ -10,6 +10,7 @@ import {
   Button,
   MenuItem,
 } from '@mui/material';
+import { useRouter } from 'next/navigation';
 import { Controller, useForm } from 'react-hook-form';
 import FooterIcons from '../components/footer_icons/page';
 
@@ -63,10 +64,13 @@ export default function WorkerRegistrationPage() {
     mode: 'onBlur',
   });
 
+  const router = useRouter();
+
   const onSubmit = async (data: FormValues) => {
     // TODO: integrar com backend / Firebase
     console.log('Worker form:', data);
     reset();
+    router.push('/professional_registration_sent');
   };
 
   return (
