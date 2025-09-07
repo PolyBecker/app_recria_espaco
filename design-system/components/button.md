@@ -44,17 +44,17 @@ Sempre usar aria-label em botões icônicos.
 
 Foco visível (outline azul #2684FF).
 
-Código (React + Tailwind + MUI)
+Code (React + MUI)
 
 import Button from "@mui/material/Button";
 
 <Button variant="contained" color="primary">
-  Entrar
+  Sign In
 </Button>
 
 
-Custom Tailwind (exemplo Primary):
+Tailwind example
 
 <button className="bg-[#FF6B00] text-white px-4 py-2 rounded-lg hover:bg-[#CC5500] disabled:opacity-50">
-  Entrar
+  Sign In
 </button>
