@@ -30,7 +30,7 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
 - [UX Guidelines](./design-system/UX-guidelines.md)
 
 ### 🎨 Tokens
-- [Colors](./design-system/tokens-design/colors.md)
+- [Colors](./design-system/tokens-design/color.md)
 - [Typography](./design-system/tokens-design/typography.md)
 - [Spacing](./design-system/tokens-design/spacing.md)
 - [Radius & Shadows](./design-system/tokens-design/radius-shadows.md)
