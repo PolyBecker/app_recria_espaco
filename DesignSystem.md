@@ -222,19 +222,4 @@ Contraste mínimo: 4.5:1 para texto.
 
 Foco visível em todos elementos interativos.
 
-4. Estrutura de Pastas Sugerida
-/design-system
-  /tokens
-    colors.ts
-    typography.ts
-    spacing.ts
-  /components
-    Button.tsx
-    Input.tsx
-    Card.tsx
-    Navbar.tsx
-    Modal.tsx
-  /docs
-    Button.mdx
-    Input.mdx
-    ...
+
