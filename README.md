@@ -25,11 +25,23 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
 
 ## Design System
 
-📖 Confira a documentação completa na pasta [design-system](./design-system).
+📖 The Design System documentation is organized into three main areas:
 
-- [Visão Geral](./design-system/overview.md)
-- [Tokens](./design-system/tokens/colors.md)
-- [Componentes](./design-system/components/button.md)
+- [UX Guidelines](./design-system/UX-guidelines.md)
+
+### 🎨 Tokens
+- [Colors](./design-system/tokens-design/colors.md)
+- [Typography](./design-system/tokens-design/typography.md)
+- [Spacing](./design-system/tokens-design/spacing.md)
+- [Radius & Shadows](./design-system/tokens-design/radius-shadows.md)
+
+### 🧩 Components
+- [Button](./design-system/components/button.md)
+- [Input](./design-system/components/input.md)
+- [Card](./design-system/components/card.md)
+- [Navbar](./design-system/components/navbar.md)
+- [Modal](./design-system/components/modal.md)
+
 
 
 ## Learn More
