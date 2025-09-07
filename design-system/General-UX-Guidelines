@@ -1,9 +1,0 @@
-Botão primary deve ser único por tela (ação principal).
-
-Ícones sociais (Apple, Google, Facebook) devem estar sempre alinhados horizontalmente com espaçamento uniforme.
-
-Layout responsivo: mobile-first, breakpoint principal em 768px.
-
-Contraste mínimo: 4.5:1 para texto.
-
-Foco visível em todos elementos interativos.
