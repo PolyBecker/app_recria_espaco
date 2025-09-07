@@ -25,7 +25,7 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
 
 ## Design System
 
-
+📖 Confira a documentação completa do Design System [aqui](./DesignSystem.md).
 
 ## Learn More
 
