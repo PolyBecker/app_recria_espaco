@@ -31,7 +31,7 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
 
 ### 🎨 Tokens
 - [Colors](./design-system/tokens-design/color.md)
-- [Typography](./design-system/tokens-design/typography.md)
+- [Typography](./design-system/tokens-design/Typography.md)
 - [Spacing](./design-system/tokens-design/spacing.md)
 - [Radius & Shadows](./design-system/tokens-design/radius-shadows.md)
 
